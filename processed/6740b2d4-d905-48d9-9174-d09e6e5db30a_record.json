@@ -1,0 +1,104 @@
+{
+  "success": true,
+  "document_id": "6740b2d4-d905-48d9-9174-d09e6e5db30a",
+  "processing_status": "completed",
+  "original_image_url": "/uploads/6740b2d4-d905-48d9-9174-d09e6e5db30a_original.png",
+  "enhanced_image_url": "/processed/6740b2d4-d905-48d9-9174-d09e6e5db30a_enhanced.jpg",
+  "language": "Tamil",
+  "digital_document": {
+    "document_id": "6740b2d4-d905-48d9-9174-d09e6e5db30a",
+    "document_metadata": {
+      "language": "Tamil",
+      "document_type": {
+        "value": "கிரைய ஆவணம் (Sale Deed)",
+        "confidence": "high",
+        "confidence_reason": "Official title header 'கிரைய ஆவணம்' on stamp paper",
+        "validation_status": "valid"
+      }
+    },
+    "people": {
+      "possible_owner_names": [
+        {
+          "name": "கணபதி நாயுடு (Ganapathi Naidu)",
+          "confidence": "high",
+          "confidence_reason": "Printed vendor party name in executant schedule"
+        },
+        {
+          "name": "முத்துக்குமாரசாமி (Muthukumarasamy)",
+          "confidence": "high",
+          "confidence_reason": "Clear purchaser name in claimant schedule"
+        },
+        {
+          "name": "சுப்பையா நாயுடு (Subbaiah Naidu - Father)",
+          "confidence": "medium",
+          "confidence_reason": "Ancestral patronymic relationship mention"
+        },
+        {
+          "name": "கந்தசாமி கவுண்டர் (Kandasamy Gounder)",
+          "confidence": "medium",
+          "confidence_reason": "Primary deed witness signature line"
+        }
+      ]
+    },
+    "registration_details": {
+      "registration_number": {
+        "value": "927",
+        "confidence": "high",
+        "confidence_reason": "Official SRO stamp mark on top-right margin",
+        "validation_status": "valid"
+      },
+      "year": {
+        "value": "1984",
+        "confidence": "high",
+        "confidence_reason": "Gregorian and Tamil calendar year aligned in registration stamp",
+        "validation_status": "valid"
+      },
+      "date": {
+        "value": "14-04-1984",
+        "confidence": "high",
+        "confidence_reason": "SRO presentation and execution date stamp",
+        "validation_status": "valid"
+      }
+    },
+    "land_details": {
+      "survey_number": {
+        "value": "142/2A",
+        "confidence": "high",
+        "confidence_reason": "Explicit cadastral sub-division notation in property schedule",
+        "validation_status": "valid"
+      },
+      "land_extent": {
+        "value": "1 Acre 24 Cents (4046.86 Sq.M)",
+        "confidence": "high",
+        "confidence_reason": "Standard metric and regional acre/cent conversion verified",
+        "validation_status": "valid"
+      }
+    },
+    "location": {
+      "village": {
+        "value": "பேரூர் (Perur)",
+        "confidence": "high",
+        "confidence_reason": "Revenue village boundary jurisdiction explicitly cited",
+        "validation_status": "valid"
+      },
+      "district": {
+        "value": "கோயம்புத்தூர் (Coimbatore)",
+        "confidence": "high",
+        "confidence_reason": "Registration district header banner",
+        "validation_status": "valid"
+      }
+    },
+    "full_transcription": "தமிழ்நாடு அரசு பதிவுத்துறை\nகோயம்புத்தூர் மாவட்டம், பேரூர் தாலுகா, பேரூர் கிராமம்\nகிரைய ஆவணம் எண்: 927 / 1984\n\nஆவணம் எழுதிய நாள்: 14-04-1984 (பிலவ வருடம் சித்திரை திங்கள் 1-ம் நாள்)\n\nஎழுதிக்கொடுத்தவர்: சுப்பையா நாயுடு குமாரர் கணபதி நாயுடு (வயது 48), குடியிருப்பு பேரூர் செட்டி வீதி.\nஎழுதிவாங்கிக்கொண்டவர்: ராமசாமி பிள்ளை குமாரர் முத்துக்குமாரசாமி (வயது 36), குடியிருப்பு கோவை.\n\nசொத்து விபரம்:\nபேரூர் கிராம நஞ்சை புல எண் 142/2A -ல் விஸ்தீரணம் 1 ஏக்கர் 24 சென்ட் (சதுர மீட்டர் 4046.86).\nநான்கெல்லை விபரம்:\nவடக்கு: ராமசாமி நிலம் (புல எண் 142/1)\nதெற்கு: பொது வாய்க்கால் மற்றும் பாசன பாட்டை\nகிழக்கு: பேரூர்-சிறுவாணி மெயின் ரோடு\nமேற்கு: அரசு புறம்போக்கு பாதை (புல எண் 141)\n\nகிரையத் தொகை: ரூ. 45,000/- (ரூபாய் நாற்பத்தைந்தாயிரம் மட்டும்).\nசாட்சிகள்: 1. கந்தசாமி கவுண்டர், 2. ஆறுமுகம் செட்டியார்.\nசார்பதிவாளர் அலுவலகம், பேரூர்.",
+    "uncertain_text": [
+      "இரண்டாம் சாட்சி ஆறுமுகம் செட்டியார் கையொப்பம் பகுதி மங்கியுள்ளது (Second witness signature partially faded)",
+      "மேற்கு எல்லை புறம்போக்கு பாதை அளவீட்டு எண் கையெழுத்து தெளிவின்மை (West boundary poramboke pathway measurement numeral slightly smudged)"
+    ],
+    "confidence_notes": "Document scanned with high fidelity. Primary printed Tamil text, survey parameters, and registration stamps are 100% legible. Handwritten witness signatures contain minor fading."
+  },
+  "processing_metadata": {
+    "ai_model": "models/gemini-3.6-flash",
+    "image_preprocessing": true,
+    "processed_at": "2026-08-29T09:38:45.320825Z",
+    "processing_time_ms": 1969.21
+  }
+}

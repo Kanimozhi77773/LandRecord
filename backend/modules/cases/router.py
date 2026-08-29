@@ -60,3 +60,6 @@ async def resolve_discrepancy(
         "ledger_block_index": ledger_block["block_index"],
         "message": "Decision recorded in cryptographic ledger."
     }
+
+
+    

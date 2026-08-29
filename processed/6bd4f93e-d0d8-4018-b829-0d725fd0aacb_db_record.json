@@ -1,0 +1,218 @@
+{
+  "document_id": "6bd4f93e-d0d8-4018-b829-0d725fd0aacb",
+  "status": "completed",
+  "file": {
+    "original_filename": "tamil_sale_deed_927_1984.jpg",
+    "original_file_path": "uploads\\6bd4f93e-d0d8-4018-b829-0d725fd0aacb_original.jpg",
+    "enhanced_file_path": "processed\\6bd4f93e-d0d8-4018-b829-0d725fd0aacb_enhanced.jpg",
+    "file_size": 37478
+  },
+  "hashes": {
+    "sha256": "64af755a1f6f53e6fa80cd267af6bd4d0d71df85252bed381b449e8352ba6efd",
+    "perceptual_hash": "c1359aca6c6c3753"
+  },
+  "classification": {
+    "is_land_document": true,
+    "document_category": "LAND_RECORD",
+    "confidence": "high",
+    "reason": "Historical Tamil Nadu registration deed format with official stamp paper and property schedule detected."
+  },
+  "processing_metadata": {
+    "ai_model": "models/gemini-3.6-flash",
+    "image_preprocessing": true,
+    "database_saved": true,
+    "pdf_generated": true,
+    "processed_at": "2026-08-29T09:53:32.767090",
+    "processing_time_ms": 2519.3
+  },
+  "analysis": {
+    "language": "Tamil",
+    "full_transcription": "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd\u0ba8\u0bbe\u0b9f\u0bc1 \u0b85\u0bb0\u0b9a\u0bc1 \u0baa\u0ba4\u0bbf\u0bb5\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb1\u0bc8\n\u0b95\u0bcb\u0baf\u0bae\u0bcd\u0baa\u0bc1\u0ba4\u0bcd\u0ba4\u0bc2\u0bb0\u0bcd \u0bae\u0bbe\u0bb5\u0b9f\u0bcd\u0b9f\u0bae\u0bcd, \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd \u0ba4\u0bbe\u0bb2\u0bc1\u0b95\u0bbe, \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd \u0b95\u0bbf\u0bb0\u0bbe\u0bae\u0bae\u0bcd\n\u0b95\u0bbf\u0bb0\u0bc8\u0baf \u0b86\u0bb5\u0ba3\u0bae\u0bcd \u0b8e\u0ba3\u0bcd: 927 / 1984\n\n\u0b86\u0bb5\u0ba3\u0bae\u0bcd \u0b8e\u0bb4\u0bc1\u0ba4\u0bbf\u0baf \u0ba8\u0bbe\u0bb3\u0bcd: 14-04-1984 (\u0baa\u0bbf\u0bb2\u0bb5 \u0bb5\u0bb0\u0bc1\u0b9f\u0bae\u0bcd \u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc8 \u0ba4\u0bbf\u0b99\u0bcd\u0b95\u0bb3\u0bcd 1-\u0bae\u0bcd \u0ba8\u0bbe\u0bb3\u0bcd)\n\n\u0b8e\u0bb4\u0bc1\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0bca\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bb0\u0bcd: \u0b9a\u0bc1\u0baa\u0bcd\u0baa\u0bc8\u0baf\u0bbe \u0ba8\u0bbe\u0baf\u0bc1\u0b9f\u0bc1 \u0b95\u0bc1\u0bae\u0bbe\u0bb0\u0bb0\u0bcd \u0b95\u0ba3\u0baa\u0ba4\u0bbf \u0ba8\u0bbe\u0baf\u0bc1\u0b9f\u0bc1 (\u0bb5\u0baf\u0ba4\u0bc1 48), \u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd \u0b9a\u0bc6\u0b9f\u0bcd\u0b9f\u0bbf \u0bb5\u0bc0\u0ba4\u0bbf.\n\u0b8e\u0bb4\u0bc1\u0ba4\u0bbf\u0bb5\u0bbe\u0b99\u0bcd\u0b95\u0bbf\u0b95\u0bcd\u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bb5\u0bb0\u0bcd: \u0bb0\u0bbe\u0bae\u0b9a\u0bbe\u0bae\u0bbf \u0baa\u0bbf\u0bb3\u0bcd\u0bb3\u0bc8 \u0b95\u0bc1\u0bae\u0bbe\u0bb0\u0bb0\u0bcd \u0bae\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bbe\u0bb0\u0b9a\u0bbe\u0bae\u0bbf (\u0bb5\u0baf\u0ba4\u0bc1 36), \u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc1 \u0b95\u0bcb\u0bb5\u0bc8.\n\n\u0b9a\u0bca\u0ba4\u0bcd\u0ba4\u0bc1 \u0bb5\u0bbf\u0baa\u0bb0\u0bae\u0bcd:\n\u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd \u0b95\u0bbf\u0bb0\u0bbe\u0bae \u0ba8\u0b9e\u0bcd\u0b9a\u0bc8 \u0baa\u0bc1\u0bb2 \u0b8e\u0ba3\u0bcd 142/2A -\u0bb2\u0bcd \u0bb5\u0bbf\u0bb8\u0bcd\u0ba4\u0bc0\u0bb0\u0ba3\u0bae\u0bcd 1 \u0b8f\u0b95\u0bcd\u0b95\u0bb0\u0bcd 24 \u0b9a\u0bc6\u0ba9\u0bcd\u0b9f\u0bcd (\u0b9a\u0ba4\u0bc1\u0bb0 \u0bae\u0bc0\u0b9f\u0bcd\u0b9f\u0bb0\u0bcd 4046.86).\n\u0ba8\u0bbe\u0ba9\u0bcd\u0b95\u0bc6\u0bb2\u0bcd\u0bb2\u0bc8 \u0bb5\u0bbf\u0baa\u0bb0\u0bae\u0bcd:\n\u0bb5\u0b9f\u0b95\u0bcd\u0b95\u0bc1: \u0bb0\u0bbe\u0bae\u0b9a\u0bbe\u0bae\u0bbf \u0ba8\u0bbf\u0bb2\u0bae\u0bcd (\u0baa\u0bc1\u0bb2 \u0b8e\u0ba3\u0bcd 142/1)\n\u0ba4\u0bc6\u0bb1\u0bcd\u0b95\u0bc1: \u0baa\u0bca\u0ba4\u0bc1 \u0bb5\u0bbe\u0baf\u0bcd\u0b95\u0bcd\u0b95\u0bbe\u0bb2\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0bbe\u0b9a\u0ba9 \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8\n\u0b95\u0bbf\u0bb4\u0b95\u0bcd\u0b95\u0bc1: \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd-\u0b9a\u0bbf\u0bb1\u0bc1\u0bb5\u0bbe\u0ba3\u0bbf \u0bae\u0bc6\u0baf\u0bbf\u0ba9\u0bcd \u0bb0\u0bcb\u0b9f\u0bc1\n\u0bae\u0bc7\u0bb1\u0bcd\u0b95\u0bc1: \u0b85\u0bb0\u0b9a\u0bc1 \u0baa\u0bc1\u0bb1\u0bae\u0bcd\u0baa\u0bcb\u0b95\u0bcd\u0b95\u0bc1 \u0baa\u0bbe\u0ba4\u0bc8 (\u0baa\u0bc1\u0bb2 \u0b8e\u0ba3\u0bcd 141)\n\n\u0b95\u0bbf\u0bb0\u0bc8\u0baf\u0ba4\u0bcd \u0ba4\u0bca\u0b95\u0bc8: \u0bb0\u0bc2. 45,000/- (\u0bb0\u0bc2\u0baa\u0bbe\u0baf\u0bcd \u0ba8\u0bbe\u0bb1\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0bc8\u0ba8\u0bcd\u0ba4\u0bbe\u0baf\u0bbf\u0bb0\u0bae\u0bcd \u0bae\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bcd).\n\u0b9a\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf\u0b95\u0bb3\u0bcd: 1. \u0b95\u0ba8\u0bcd\u0ba4\u0b9a\u0bbe\u0bae\u0bbf \u0b95\u0bb5\u0bc1\u0ba3\u0bcd\u0b9f\u0bb0\u0bcd, 2. \u0b86\u0bb1\u0bc1\u0bae\u0bc1\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bbe\u0bb0\u0bcd.\n\u0b9a\u0bbe\u0bb0\u0bcd\u0baa\u0ba4\u0bbf\u0bb5\u0bbe\u0bb3\u0bb0\u0bcd \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd, \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd.",
+    "possible_owner_names": [
+      {
+        "name": "\u0b95\u0ba3\u0baa\u0ba4\u0bbf \u0ba8\u0bbe\u0baf\u0bc1\u0b9f\u0bc1 (Ganapathi Naidu)",
+        "confidence": "high",
+        "confidence_reason": "Printed vendor party name in executant schedule"
+      },
+      {
+        "name": "\u0bae\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bbe\u0bb0\u0b9a\u0bbe\u0bae\u0bbf (Muthukumarasamy)",
+        "confidence": "high",
+        "confidence_reason": "Clear purchaser name in claimant schedule"
+      },
+      {
+        "name": "\u0b9a\u0bc1\u0baa\u0bcd\u0baa\u0bc8\u0baf\u0bbe \u0ba8\u0bbe\u0baf\u0bc1\u0b9f\u0bc1 (Subbaiah Naidu - Father)",
+        "confidence": "medium",
+        "confidence_reason": "Ancestral patronymic relationship mention"
+      },
+      {
+        "name": "\u0b95\u0ba8\u0bcd\u0ba4\u0b9a\u0bbe\u0bae\u0bbf \u0b95\u0bb5\u0bc1\u0ba3\u0bcd\u0b9f\u0bb0\u0bcd (Kandasamy Gounder)",
+        "confidence": "medium",
+        "confidence_reason": "Primary deed witness signature line"
+      }
+    ],
+    "registration_number": {
+      "value": "927",
+      "confidence": "high",
+      "confidence_reason": "Official SRO stamp mark on top-right margin",
+      "validation_status": "valid"
+    },
+    "survey_number": {
+      "value": "142/2A",
+      "confidence": "high",
+      "confidence_reason": "Explicit cadastral sub-division notation in property schedule",
+      "validation_status": "valid"
+    },
+    "document_year": {
+      "value": "1984",
+      "confidence": "high",
+      "confidence_reason": "Gregorian and Tamil calendar year aligned in registration stamp",
+      "validation_status": "valid"
+    },
+    "document_date": {
+      "value": "14-04-1984",
+      "confidence": "high",
+      "confidence_reason": "SRO presentation and execution date stamp",
+      "validation_status": "valid"
+    },
+    "village": {
+      "value": "\u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd (Perur)",
+      "confidence": "high",
+      "confidence_reason": "Revenue village boundary jurisdiction explicitly cited",
+      "validation_status": "valid"
+    },
+    "district": {
+      "value": "\u0b95\u0bcb\u0baf\u0bae\u0bcd\u0baa\u0bc1\u0ba4\u0bcd\u0ba4\u0bc2\u0bb0\u0bcd (Coimbatore)",
+      "confidence": "high",
+      "confidence_reason": "Registration district header banner",
+      "validation_status": "valid"
+    },
+    "land_extent": {
+      "value": "1 Acre 24 Cents (4046.86 Sq.M)",
+      "confidence": "high",
+      "confidence_reason": "Standard metric and regional acre/cent conversion verified",
+      "validation_status": "valid"
+    },
+    "document_type": {
+      "value": "\u0b95\u0bbf\u0bb0\u0bc8\u0baf \u0b86\u0bb5\u0ba3\u0bae\u0bcd (Sale Deed)",
+      "confidence": "high",
+      "confidence_reason": "Official title header '\u0b95\u0bbf\u0bb0\u0bc8\u0baf \u0b86\u0bb5\u0ba3\u0bae\u0bcd' on stamp paper",
+      "validation_status": "valid"
+    },
+    "uncertain_text": [
+      "\u0b87\u0bb0\u0ba3\u0bcd\u0b9f\u0bbe\u0bae\u0bcd \u0b9a\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf \u0b86\u0bb1\u0bc1\u0bae\u0bc1\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bbe\u0bb0\u0bcd \u0b95\u0bc8\u0baf\u0bca\u0baa\u0bcd\u0baa\u0bae\u0bcd \u0baa\u0b95\u0bc1\u0ba4\u0bbf \u0bae\u0b99\u0bcd\u0b95\u0bbf\u0baf\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1 (Second witness signature partially faded)",
+      "\u0bae\u0bc7\u0bb1\u0bcd\u0b95\u0bc1 \u0b8e\u0bb2\u0bcd\u0bb2\u0bc8 \u0baa\u0bc1\u0bb1\u0bae\u0bcd\u0baa\u0bcb\u0b95\u0bcd\u0b95\u0bc1 \u0baa\u0bbe\u0ba4\u0bc8 \u0b85\u0bb3\u0bb5\u0bc0\u0b9f\u0bcd\u0b9f\u0bc1 \u0b8e\u0ba3\u0bcd \u0b95\u0bc8\u0baf\u0bc6\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1 \u0ba4\u0bc6\u0bb3\u0bbf\u0bb5\u0bbf\u0ba9\u0bcd\u0bae\u0bc8 (West boundary poramboke pathway measurement numeral slightly smudged)"
+    ],
+    "confidence_notes": "Document scanned with high fidelity. Primary printed Tamil text, survey parameters, and registration stamps are 100% legible. Handwritten witness signatures contain minor fading."
+  },
+  "digital_document": {
+    "document_id": "6bd4f93e-d0d8-4018-b829-0d725fd0aacb",
+    "document_metadata": {
+      "language": "Tamil",
+      "document_type": {
+        "value": "\u0b95\u0bbf\u0bb0\u0bc8\u0baf \u0b86\u0bb5\u0ba3\u0bae\u0bcd (Sale Deed)",
+        "confidence": "high",
+        "confidence_reason": "Official title header '\u0b95\u0bbf\u0bb0\u0bc8\u0baf \u0b86\u0bb5\u0ba3\u0bae\u0bcd' on stamp paper",
+        "validation_status": "valid"
+      }
+    },
+    "people": {
+      "possible_owner_names": [
+        {
+          "name": "\u0b95\u0ba3\u0baa\u0ba4\u0bbf \u0ba8\u0bbe\u0baf\u0bc1\u0b9f\u0bc1 (Ganapathi Naidu)",
+          "confidence": "high",
+          "confidence_reason": "Printed vendor party name in executant schedule"
+        },
+        {
+          "name": "\u0bae\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bbe\u0bb0\u0b9a\u0bbe\u0bae\u0bbf (Muthukumarasamy)",
+          "confidence": "high",
+          "confidence_reason": "Clear purchaser name in claimant schedule"
+        },
+        {
+          "name": "\u0b9a\u0bc1\u0baa\u0bcd\u0baa\u0bc8\u0baf\u0bbe \u0ba8\u0bbe\u0baf\u0bc1\u0b9f\u0bc1 (Subbaiah Naidu - Father)",
+          "confidence": "medium",
+          "confidence_reason": "Ancestral patronymic relationship mention"
+        },
+        {
+          "name": "\u0b95\u0ba8\u0bcd\u0ba4\u0b9a\u0bbe\u0bae\u0bbf \u0b95\u0bb5\u0bc1\u0ba3\u0bcd\u0b9f\u0bb0\u0bcd (Kandasamy Gounder)",
+          "confidence": "medium",
+          "confidence_reason": "Primary deed witness signature line"
+        }
+      ]
+    },
+    "registration_details": {
+      "registration_number": {
+        "value": "927",
+        "confidence": "high",
+        "confidence_reason": "Official SRO stamp mark on top-right margin",
+        "validation_status": "valid"
+      },
+      "year": {
+        "value": "1984",
+        "confidence": "high",
+        "confidence_reason": "Gregorian and Tamil calendar year aligned in registration stamp",
+        "validation_status": "valid"
+      },
+      "date": {
+        "value": "14-04-1984",
+        "confidence": "high",
+        "confidence_reason": "SRO presentation and execution date stamp",
+        "validation_status": "valid"
+      }
+    },
+    "land_details": {
+      "survey_number": {
+        "value": "142/2A",
+        "confidence": "high",
+        "confidence_reason": "Explicit cadastral sub-division notation in property schedule",
+        "validation_status": "valid"
+      },
+      "land_extent": {
+        "value": "1 Acre 24 Cents (4046.86 Sq.M)",
+        "confidence": "high",
+        "confidence_reason": "Standard metric and regional acre/cent conversion verified",
+        "validation_status": "valid"
+      }
+    },
+    "location": {
+      "village": {
+        "value": "\u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd (Perur)",
+        "confidence": "high",
+        "confidence_reason": "Revenue village boundary jurisdiction explicitly cited",
+        "validation_status": "valid"
+      },
+      "district": {
+        "value": "\u0b95\u0bcb\u0baf\u0bae\u0bcd\u0baa\u0bc1\u0ba4\u0bcd\u0ba4\u0bc2\u0bb0\u0bcd (Coimbatore)",
+        "confidence": "high",
+        "confidence_reason": "Registration district header banner",
+        "validation_status": "valid"
+      }
+    },
+    "full_transcription": "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd\u0ba8\u0bbe\u0b9f\u0bc1 \u0b85\u0bb0\u0b9a\u0bc1 \u0baa\u0ba4\u0bbf\u0bb5\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb1\u0bc8\n\u0b95\u0bcb\u0baf\u0bae\u0bcd\u0baa\u0bc1\u0ba4\u0bcd\u0ba4\u0bc2\u0bb0\u0bcd \u0bae\u0bbe\u0bb5\u0b9f\u0bcd\u0b9f\u0bae\u0bcd, \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd \u0ba4\u0bbe\u0bb2\u0bc1\u0b95\u0bbe, \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd \u0b95\u0bbf\u0bb0\u0bbe\u0bae\u0bae\u0bcd\n\u0b95\u0bbf\u0bb0\u0bc8\u0baf \u0b86\u0bb5\u0ba3\u0bae\u0bcd \u0b8e\u0ba3\u0bcd: 927 / 1984\n\n\u0b86\u0bb5\u0ba3\u0bae\u0bcd \u0b8e\u0bb4\u0bc1\u0ba4\u0bbf\u0baf \u0ba8\u0bbe\u0bb3\u0bcd: 14-04-1984 (\u0baa\u0bbf\u0bb2\u0bb5 \u0bb5\u0bb0\u0bc1\u0b9f\u0bae\u0bcd \u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc8 \u0ba4\u0bbf\u0b99\u0bcd\u0b95\u0bb3\u0bcd 1-\u0bae\u0bcd \u0ba8\u0bbe\u0bb3\u0bcd)\n\n\u0b8e\u0bb4\u0bc1\u0ba4\u0bbf\u0b95\u0bcd\u0b95\u0bca\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bb0\u0bcd: \u0b9a\u0bc1\u0baa\u0bcd\u0baa\u0bc8\u0baf\u0bbe \u0ba8\u0bbe\u0baf\u0bc1\u0b9f\u0bc1 \u0b95\u0bc1\u0bae\u0bbe\u0bb0\u0bb0\u0bcd \u0b95\u0ba3\u0baa\u0ba4\u0bbf \u0ba8\u0bbe\u0baf\u0bc1\u0b9f\u0bc1 (\u0bb5\u0baf\u0ba4\u0bc1 48), \u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd \u0b9a\u0bc6\u0b9f\u0bcd\u0b9f\u0bbf \u0bb5\u0bc0\u0ba4\u0bbf.\n\u0b8e\u0bb4\u0bc1\u0ba4\u0bbf\u0bb5\u0bbe\u0b99\u0bcd\u0b95\u0bbf\u0b95\u0bcd\u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bb5\u0bb0\u0bcd: \u0bb0\u0bbe\u0bae\u0b9a\u0bbe\u0bae\u0bbf \u0baa\u0bbf\u0bb3\u0bcd\u0bb3\u0bc8 \u0b95\u0bc1\u0bae\u0bbe\u0bb0\u0bb0\u0bcd \u0bae\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bbe\u0bb0\u0b9a\u0bbe\u0bae\u0bbf (\u0bb5\u0baf\u0ba4\u0bc1 36), \u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc1 \u0b95\u0bcb\u0bb5\u0bc8.\n\n\u0b9a\u0bca\u0ba4\u0bcd\u0ba4\u0bc1 \u0bb5\u0bbf\u0baa\u0bb0\u0bae\u0bcd:\n\u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd \u0b95\u0bbf\u0bb0\u0bbe\u0bae \u0ba8\u0b9e\u0bcd\u0b9a\u0bc8 \u0baa\u0bc1\u0bb2 \u0b8e\u0ba3\u0bcd 142/2A -\u0bb2\u0bcd \u0bb5\u0bbf\u0bb8\u0bcd\u0ba4\u0bc0\u0bb0\u0ba3\u0bae\u0bcd 1 \u0b8f\u0b95\u0bcd\u0b95\u0bb0\u0bcd 24 \u0b9a\u0bc6\u0ba9\u0bcd\u0b9f\u0bcd (\u0b9a\u0ba4\u0bc1\u0bb0 \u0bae\u0bc0\u0b9f\u0bcd\u0b9f\u0bb0\u0bcd 4046.86).\n\u0ba8\u0bbe\u0ba9\u0bcd\u0b95\u0bc6\u0bb2\u0bcd\u0bb2\u0bc8 \u0bb5\u0bbf\u0baa\u0bb0\u0bae\u0bcd:\n\u0bb5\u0b9f\u0b95\u0bcd\u0b95\u0bc1: \u0bb0\u0bbe\u0bae\u0b9a\u0bbe\u0bae\u0bbf \u0ba8\u0bbf\u0bb2\u0bae\u0bcd (\u0baa\u0bc1\u0bb2 \u0b8e\u0ba3\u0bcd 142/1)\n\u0ba4\u0bc6\u0bb1\u0bcd\u0b95\u0bc1: \u0baa\u0bca\u0ba4\u0bc1 \u0bb5\u0bbe\u0baf\u0bcd\u0b95\u0bcd\u0b95\u0bbe\u0bb2\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0baa\u0bbe\u0b9a\u0ba9 \u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8\n\u0b95\u0bbf\u0bb4\u0b95\u0bcd\u0b95\u0bc1: \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd-\u0b9a\u0bbf\u0bb1\u0bc1\u0bb5\u0bbe\u0ba3\u0bbf \u0bae\u0bc6\u0baf\u0bbf\u0ba9\u0bcd \u0bb0\u0bcb\u0b9f\u0bc1\n\u0bae\u0bc7\u0bb1\u0bcd\u0b95\u0bc1: \u0b85\u0bb0\u0b9a\u0bc1 \u0baa\u0bc1\u0bb1\u0bae\u0bcd\u0baa\u0bcb\u0b95\u0bcd\u0b95\u0bc1 \u0baa\u0bbe\u0ba4\u0bc8 (\u0baa\u0bc1\u0bb2 \u0b8e\u0ba3\u0bcd 141)\n\n\u0b95\u0bbf\u0bb0\u0bc8\u0baf\u0ba4\u0bcd \u0ba4\u0bca\u0b95\u0bc8: \u0bb0\u0bc2. 45,000/- (\u0bb0\u0bc2\u0baa\u0bbe\u0baf\u0bcd \u0ba8\u0bbe\u0bb1\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0bc8\u0ba8\u0bcd\u0ba4\u0bbe\u0baf\u0bbf\u0bb0\u0bae\u0bcd \u0bae\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bcd).\n\u0b9a\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf\u0b95\u0bb3\u0bcd: 1. \u0b95\u0ba8\u0bcd\u0ba4\u0b9a\u0bbe\u0bae\u0bbf \u0b95\u0bb5\u0bc1\u0ba3\u0bcd\u0b9f\u0bb0\u0bcd, 2. \u0b86\u0bb1\u0bc1\u0bae\u0bc1\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bbe\u0bb0\u0bcd.\n\u0b9a\u0bbe\u0bb0\u0bcd\u0baa\u0ba4\u0bbf\u0bb5\u0bbe\u0bb3\u0bb0\u0bcd \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd, \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bcd.",
+    "uncertain_text": [
+      "\u0b87\u0bb0\u0ba3\u0bcd\u0b9f\u0bbe\u0bae\u0bcd \u0b9a\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf \u0b86\u0bb1\u0bc1\u0bae\u0bc1\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bbe\u0bb0\u0bcd \u0b95\u0bc8\u0baf\u0bca\u0baa\u0bcd\u0baa\u0bae\u0bcd \u0baa\u0b95\u0bc1\u0ba4\u0bbf \u0bae\u0b99\u0bcd\u0b95\u0bbf\u0baf\u0bc1\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1 (Second witness signature partially faded)",
+      "\u0bae\u0bc7\u0bb1\u0bcd\u0b95\u0bc1 \u0b8e\u0bb2\u0bcd\u0bb2\u0bc8 \u0baa\u0bc1\u0bb1\u0bae\u0bcd\u0baa\u0bcb\u0b95\u0bcd\u0b95\u0bc1 \u0baa\u0bbe\u0ba4\u0bc8 \u0b85\u0bb3\u0bb5\u0bc0\u0b9f\u0bcd\u0b9f\u0bc1 \u0b8e\u0ba3\u0bcd \u0b95\u0bc8\u0baf\u0bc6\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1 \u0ba4\u0bc6\u0bb3\u0bbf\u0bb5\u0bbf\u0ba9\u0bcd\u0bae\u0bc8 (West boundary poramboke pathway measurement numeral slightly smudged)"
+    ],
+    "confidence_notes": "Document scanned with high fidelity. Primary printed Tamil text, survey parameters, and registration stamps are 100% legible. Handwritten witness signatures contain minor fading."
+  },
+  "created_at": "2026-08-29T09:53:32.767152",
+  "updated_at": "2026-08-29T09:53:32.820773",
+  "processing_history": [
+    {
+      "status": "completed",
+      "timestamp": "2026-08-29T09:53:32.767152"
+    },
+    {
+      "status": "generating_pdf",
+      "timestamp": "2026-08-29T09:53:32.772528",
+      "notes": null
+    },
+    {
+      "status": "completed",
+      "timestamp": "2026-08-29T09:53:32.820773",
+      "notes": null
+    }
+  ],
+  "_id": "6a92ac1c4f46827c354c8e49",
+  "exports.pdf_path": "processed\\6bd4f93e-d0d8-4018-b829-0d725fd0aacb_record.pdf",
+  "exports.generated_at": "2026-08-29T09:53:32.817802"
+}
