@@ -1,0 +1,28 @@
+{
+  "document_id": "2389be8b-219f-4e68-b2d5-fc00ba3617fc",
+  "status": "invalid_document",
+  "file": {
+    "original_filename": "college_certificate.jpg",
+    "original_file_path": "uploads\\2389be8b-219f-4e68-b2d5-fc00ba3617fc_original.jpg",
+    "file_size": 59690
+  },
+  "hashes": {
+    "sha256": "b701d4bdece394df777ba65488ff3fd850250b7327cbb4026e7c8b4c774f93ba",
+    "perceptual_hash": "843e2fc26be46a8b"
+  },
+  "classification": {
+    "is_land_document": false,
+    "document_category": "OTHER_DOCUMENT",
+    "confidence": "high",
+    "reason": "The uploaded file appears to be an educational certificate or invoice rather than a land record."
+  },
+  "created_at": "2026-08-29T09:54:12.846755",
+  "updated_at": "2026-08-29T09:54:12.846755",
+  "processing_history": [
+    {
+      "status": "invalid_document",
+      "timestamp": "2026-08-29T09:54:12.846755"
+    }
+  ],
+  "_id": "6a92ac444f46827c354c8e4d"
+}
