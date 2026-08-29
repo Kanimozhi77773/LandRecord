@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LandIntel — Intelligent Land Record Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-950:#15112E;
+  --navy-900:#1F1A45;
+  --navy-800:#2A2360;
+  --purple-600:#7C5CE0;
+  --purple-500:#9B81F0;
+  --purple-100:#EDE8FD;
+  --lavender-50:#F7F5FE;
+  --lavender-100:#EFEAFC;
+  --white:#FFFFFF;
+  --ink-900:#1C1830;
+  --ink-600:#4C4667;
+  --ink-400:#8983A3;
+  --line:#E4DFF7;
+  --gold-500:#C9A24B;
+  --green-600:#14915F;
+  --green-100:#E4F7EE;
+  --amber-600:#B9791E;
+  --amber-100:#FBF0DD;
+  --red-600:#D0453E;
+  --red-100:#FBE7E6;
+  --shadow-sm:0 1px 2px rgba(28,24,48,.06);
+  --shadow-md:0 8px 24px rgba(31,26,69,.10);
+  --shadow-lg:0 20px 48px rgba(31,26,69,.16);
+  --radius:14px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--ink-900);
+  background:var(--lavender-50);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Playfair Display',serif;}
+.mono{font-family:'JetBrains Mono',monospace;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;}
+:focus-visible{outline:2px solid var(--purple-600);outline-offset:2px;}
+.hidden{display:none !important;}
+
+/* ---------- Layout shells ---------- */
+#app{min-height:100vh;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 22px;border-radius:999px;border:1px solid transparent;
+  font-weight:600;font-size:14.5px;line-height:1;transition:all .15s ease;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--purple-600);color:#fff;box-shadow:0 6px 16px rgba(124,92,224,.32);}
+.btn-primary:hover{background:#6A4AD4;transform:translateY(-1px);}
+.btn-outline{background:transparent;color:var(--navy-900);border-color:var(--line);}
+.btn-outline:hover{border-color:var(--purple-500);color:var(--purple-600);}
+.btn-ghost{background:transparent;color:var(--ink-600);border-color:transparent;padding:8px 14px;}
+.btn-ghost:hover{color:var(--purple-600);}
+.btn-sm{padding:7px 14px;font-size:13px;border-radius:999px;}
+.btn-danger{background:var(--red-100);color:var(--red-600);}
+.btn-danger:hover{background:#f6d2d0;}
+.btn-success{background:var(--green-600);color:#fff;}
+.btn-success:hover{background:#107a4f;}
+.btn-block{width:100%;}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+
+/* ---------- Navbar (landing) ---------- */
+.navbar{
+  position:sticky;top:0;z-index:40;background:rgba(247,245,254,.86);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+}
+.navbar .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:.2px;}
+.brand-mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(150deg,var(--purple-600),var(--navy-900));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.brand-mark svg{width:20px;height:20px;}
+.brand span.accent{color:var(--purple-600);font-style:italic;font-family:'Playfair Display',serif;}
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-links a{font-weight:600;font-size:14.5px;color:var(--ink-600);}
+.nav-links a:hover{color:var(--purple-600);}
+.nav-actions{display:flex;align-items:center;gap:12px;}
+
+/* ---------- Hero ---------- */
+.hero{padding:76px 0 60px;position:relative;overflow:hidden;}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
+  background:var(--purple-100);color:var(--purple-600);font-weight:700;font-size:12.5px;
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px;
+}
+.hero h1{font-size:52px;line-height:1.08;font-weight:700;color:var(--navy-950);margin:0 0 20px;letter-spacing:-.01em;}
+.hero h1 em{color:var(--purple-600);font-style:italic;}
+.hero p.lead{font-size:17px;color:var(--ink-600);max-width:480px;line-height:1.65;margin:0 0 32px;}
+.hero-ctas{display:flex;gap:14px;margin-bottom:44px;}
+.hero-stats{display:flex;gap:40px;}
+.hero-stats .stat b{display:block;font-family:'Playfair Display',serif;font-size:28px;color:var(--navy-950);}
+.hero-stats .stat span{font-size:12.5px;color:var(--ink-400);text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
+
+.hero-visual{position:relative;}
+.parcel-card{
+  background:var(--navy-950);border-radius:22px;padding:26px;position:relative;
+  box-shadow:var(--shadow-lg);overflow:hidden;
+}
+.parcel-card .tag{color:#C9BEF7;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;justify-content:space-between;margin-bottom:18px;}
+.parcel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.parcel-grid .cell{aspect-ratio:1;border-radius:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);position:relative;transition:background .3s;}
+.parcel-grid .cell.active{background:linear-gradient(150deg,var(--purple-500),var(--purple-600));border-color:transparent;box-shadow:0 0 0 4px rgba(155,129,240,.22);}
+.parcel-grid .cell.active::after{content:'125/2';position:absolute;bottom:4px;left:6px;font-size:9px;font-family:'JetBrains Mono',monospace;color:#fff;opacity:.9;}
+.scan-line{position:absolute;left:26px;right:26px;height:2px;background:linear-gradient(90deg,transparent, #B9A6F5, transparent);animation:scan 3.2s linear infinite;top:70px;}
+@keyframes scan{0%{transform:translateY(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(190px);opacity:0}}
+.parcel-footer{display:flex;justify-content:space-between;align-items:center;margin-top:20px;color:#D9D1F8;font-size:12px;}
+.float-badge{
+  position:absolute;background:#fff;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:11px;
+  box-shadow:var(--shadow-md);max-width:210px;
+}
+.float-badge .ico{width:34px;height:34px;border-radius:10px;background:var(--purple-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
+.float-badge b{display:block;font-size:12.5px;font-weight:700;color:var(--navy-950);}
+.float-badge span{font-size:11px;color:var(--ink-400);}
+.badge-1{top:-18px;right:8px;}
+.badge-2{bottom:-16px;left:-18px;}
+
+/* ---------- Sections ---------- */
+.section{padding:88px 0;}
+.section-head{text-align:center;max-width:620px;margin:0 auto 52px;}
+.section-head .eyebrow{margin-bottom:16px;}
+.section-head h2{font-size:36px;color:var(--navy-950);margin:0 0 14px;}
+.section-head p{color:var(--ink-600);font-size:15.5px;line-height:1.6;margin:0;}
+.section-alt{background:var(--lavender-100);}
+
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.svc-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow-sm);transition:transform .18s, box-shadow .18s;}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+.svc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;}
+.svc-card h3{font-family:'Inter';font-size:18px;font-weight:700;margin:0 0 10px;color:var(--navy-950);}
+.svc-card p{font-size:14px;color:var(--ink-600);line-height:1.6;margin:0 0 16px;}
+.svc-card .svc-link{font-size:13.5px;font-weight:700;color:var(--purple-600);display:inline-flex;align-items:center;gap:6px;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about-grid h2{font-size:32px;color:var(--navy-950);margin:0 0 18px;}
+.about-grid p{color:var(--ink-600);font-size:15px;line-height:1.75;margin:0 0 16px;}
+.pillar-list{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+.pillar{display:flex;gap:14px;align-items:flex-start;}
+.pillar .num{font-family:'JetBrains Mono';font-weight:700;color:var(--purple-600);font-size:13px;background:var(--purple-100);width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pillar b{display:block;font-size:14.5px;color:var(--navy-950);margin-bottom:2px;}
+.pillar span{font-size:13.5px;color:var(--ink-600);}
+.about-visual{background:var(--navy-950);border-radius:22px;padding:34px;color:#fff;box-shadow:var(--shadow-lg);}
+.about-visual .stat-row{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+.about-visual .stat-row:last-child{border-bottom:none;}
+.about-visual .stat-row span{color:#B9AEE8;font-size:13px;}
+.about-visual .stat-row b{font-family:'Playfair Display';font-size:20px;}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--navy-950);color:#CFC7EE;padding:56px 0 26px;}
+.footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;}
+.footer .brand{color:#fff;}
+.footer p.tag{font-size:13.5px;color:#9C92C4;margin:14px 0 0;max-width:260px;line-height:1.6;}
+.footer h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#9C92C4;margin:0 0 16px;}
+.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px;}
+.footer ul a{font-size:14px;color:#D9D3F2;}
+.footer ul a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:44px;padding-top:22px;font-size:12.5px;color:#8A7FB8;text-align:center;}
+
+/* ---------- Modal (auth) ---------- */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(21,17,46,.55);backdrop-filter:blur(3px);
+  display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;
+}
+.modal{background:#fff;border-radius:20px;width:100%;max-width:440px;box-shadow:var(--shadow-lg);position:relative;max-height:92vh;overflow-y:auto;}
+.modal-wide{max-width:840px;}
+.modal-xwide{max-width:1120px;}
+.modal-head{padding:26px 28px 0;display:flex;justify-content:space-between;align-items:flex-start;}
+.modal-head h3{margin:0;font-size:22px;color:var(--navy-950);}
+.modal-head p{margin:6px 0 0;font-size:13.5px;color:var(--ink-400);}
+.modal-close{background:var(--lavender-100);border:none;width:32px;height:32px;border-radius:999px;font-size:16px;color:var(--ink-600);flex-shrink:0;}
+.modal-body{padding:22px 28px 28px;}
+.role-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px;}
+.role-pick{border:1.5px solid var(--line);border-radius:12px;padding:14px 8px;text-align:center;background:#fff;transition:all .15s;}
+.role-pick .r-ico{font-size:20px;margin-bottom:6px;}
+.role-pick b{display:block;font-size:12.5px;color:var(--navy-950);}
+.role-pick.active{border-color:var(--purple-600);background:var(--purple-100);}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink-600);margin-bottom:7px;}
+.field input,.field select,.field textarea{
+  width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:14px;
+  font-family:inherit;background:var(--lavender-50);color:var(--navy-950);
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--purple-600);background:#fff;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-hint{font-size:12px;color:var(--ink-400);margin-top:16px;text-align:center;}
+.form-hint a{color:var(--purple-600);font-weight:700;}
+.err-text{font-size:12.5px;color:var(--red-600);margin-top:8px;display:none;}
+
+/* ---------- Dashboard shell ---------- */
+.dash{display:grid;grid-template-columns:250px 1fr;min-height:100vh;}
+.sidebar{background:var(--navy-950);color:#DED6F7;padding:22px 16px;display:flex;flex-direction:column;}
+.sidebar .brand{color:#fff;padding:0 10px;margin-bottom:26px;font-size:17px;}
+.sidebar .brand-mark{width:32px;height:32px;}
+.side-group{margin-bottom:6px;}
+.side-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:#8A7FB8;padding:14px 12px 6px;font-weight:700;}
+.side-link{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:500;color:#CFC7EE;margin-bottom:2px;border:none;background:transparent;width:100%;text-align:left;}
+.side-link .ic{width:18px;text-align:center;font-size:15px;}
+.side-link:hover{background:rgba(255,255,255,.06);color:#fff;}
+.side-link.active{background:var(--purple-600);color:#fff;box-shadow:0 4px 12px rgba(124,92,224,.35);}
+.side-bottom{margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);}
+
+.main{padding:0;overflow-x:hidden;}
+.topbar{
+  height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;
+  padding:0 30px;position:sticky;top:0;z-index:20;
+}
+.topbar-title{font-weight:700;font-size:15.5px;color:var(--navy-950);display:flex;align-items:center;gap:10px;}
+.role-chip{background:var(--purple-100);color:var(--purple-600);font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em;}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--ink-600);position:relative;}
+.icon-btn:hover{border-color:var(--purple-500);color:var(--purple-600);}
+.avatar{width:36px;height:36px;border-radius:999px;background:linear-gradient(150deg,var(--purple-500),var(--navy-900));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;}
+
+.page{padding:28px 30px 60px;}
+.page-welcome{margin-bottom:26px;}
+.page-welcome h2{font-size:24px;margin:0 0 4px;color:var(--navy-950);}
+.page-welcome p{margin:0;color:var(--ink-600);font-size:14px;}
+.page-head-row{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px;flex-wrap:wrap;gap:14px;}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:26px;}
+.kpi-grid.k5{grid-template-columns:repeat(5,1fr);}
+.kpi-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow-sm);}
+.kpi-card .kpi-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.kpi-card .kpi-label{font-size:12.5px;color:var(--ink-400);font-weight:600;text-transform:uppercase;letter-spacing:.03em;}
+.kpi-card .kpi-ic{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.kpi-card .kpi-val{font-family:'Playfair Display';font-size:30px;color:var(--navy-950);}
+.kpi-card .kpi-sub{font-size:12px;color:var(--ink-400);margin-top:4px;}
+.kpi-card .kpi-sub.up{color:var(--green-600);font-weight:600;}
+.kpi-card .progress{height:6px;border-radius:99px;background:var(--lavender-100);margin-top:12px;overflow:hidden;}
+.kpi-card .progress i{display:block;height:100%;background:var(--purple-600);border-radius:99px;}
+
+.grid-2{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin-bottom:26px;}
+.grid-2-even{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:26px;}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);}
+.panel-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+.panel-head h3{margin:0;font-size:14.5px;color:var(--navy-950);letter-spacing:.02em;}
+.panel-body{padding:20px 22px;}
+
+.stage-row{display:flex;align-items:center;gap:0;margin:8px 0 4px;}
+.stage{flex:1;text-align:center;position:relative;}
+.stage b{display:block;font-family:'Playfair Display';font-size:22px;color:var(--navy-950);}
+.stage span{font-size:11.5px;color:var(--ink-400);text-transform:uppercase;letter-spacing:.03em;}
+.stage-arrow{color:var(--purple-500);font-size:16px;padding:0 6px;}
+
+.bar-list{display:flex;flex-direction:column;gap:14px;}
+.bar-item .bar-top{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-600);margin-bottom:6px;}
+.bar-item .bar-top b{color:var(--navy-950);}
+.bar-track{height:9px;border-radius:99px;background:var(--lavender-100);overflow:hidden;}
+.bar-track i{display:block;height:100%;border-radius:99px;}
+.bar-purple{background:var(--purple-600);}
+.bar-green{background:var(--green-600);}
+.bar-amber{background:var(--amber-600);}
+.bar-red{background:var(--red-600);}
+
+.quick-actions{display:flex;flex-direction:column;gap:10px;}
+.qa-btn{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:13.5px;color:var(--navy-950);width:100%;text-align:left;}
+.qa-btn:hover{border-color:var(--purple-500);background:var(--purple-100);}
+.qa-btn .ic{font-size:17px;}
+
+table{width:100%;border-collapse:collapse;}
+th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-400);padding:0 10px 12px;font-weight:700;border-bottom:1px solid var(--line);}
+td{padding:13px 10px;font-size:13.5px;border-bottom:1px solid var(--lavender-100);color:var(--ink-600);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+td.mono{font-family:'JetBrains Mono';font-size:12.5px;color:var(--navy-950);}
+td b{color:var(--navy-950);}
+
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;}
+.badge-green{background:var(--green-100);color:var(--green-600);}
+.badge-amber{background:var(--amber-100);color:var(--amber-600);}
+.badge-red{background:var(--red-100);color:var(--red-600);}
+.badge-purple{background:var(--purple-100);color:var(--purple-600);}
+.badge-gray{background:var(--lavender-100);color:var(--ink-400);}
+
+.conf{font-weight:700;font-family:'JetBrains Mono';font-size:12.5px;}
+.conf-hi{color:var(--green-600);}
+.conf-mid{color:var(--amber-600);}
+.conf-lo{color:var(--red-600);}
+
+.attention-list{display:flex;flex-direction:column;}
+.attention-item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--lavender-100);}
+.attention-item:last-child{border-bottom:none;}
+.attention-item .a-left b{display:block;font-size:13.5px;color:var(--navy-950);}
+.attention-item .a-left span{font-size:12px;color:var(--ink-400);}
+
+.empty-state{padding:60px 20px;text-align:center;color:var(--ink-400);}
+.empty-state .e-ico{font-size:34px;margin-bottom:12px;}
+.empty-state h4{color:var(--navy-950);margin:0 0 6px;font-size:15px;}
+.empty-state p{margin:0;font-size:13.5px;}
+
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:18px;}
+.toolbar input,.toolbar select{padding:9px 14px;border-radius:10px;border:1.5px solid var(--line);font-size:13.5px;background:#fff;font-family:inherit;}
+.toolbar .grow{flex:1;min-width:160px;}
+
+.upload-box{border:2px dashed var(--purple-300,#C7B7F5);border-radius:16px;padding:44px 20px;text-align:center;background:var(--lavender-50);margin-bottom:18px;}
+.upload-box .u-ico{font-size:30px;margin-bottom:10px;}
+.upload-box b{display:block;font-size:14.5px;color:var(--navy-950);margin-bottom:4px;}
+.upload-box span{font-size:12.5px;color:var(--ink-400);}
+
+.checklist{display:flex;flex-direction:column;gap:14px;}
+.check-step{display:flex;align-items:center;gap:12px;}
+.check-step .c-dot{width:22px;height:22px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.check-step.done .c-dot{background:var(--green-600);color:#fff;}
+.check-step.active .c-dot{background:var(--purple-600);color:#fff;animation:pulse 1.4s infinite;}
+.check-step.pending .c-dot{background:var(--lavender-100);color:var(--ink-400);border:1.5px solid var(--line);}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,92,224,.4)}70%{box-shadow:0 0 0 8px rgba(124,92,224,0)}100%{box-shadow:0 0 0 0 rgba(124,92,224,0)}}
+.check-step span{font-size:13.5px;color:var(--ink-600);}
+.check-step.done span{color:var(--navy-950);font-weight:600;}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.split-3{display:grid;grid-template-columns:0.95fr 1fr 0.85fr;gap:0;}
+.split > div, .split-3 > div{padding:22px;}
+.split > div + div, .split-3 > div + div{border-left:1px solid var(--line);}
+.doc-preview{background:var(--navy-950);border-radius:14px;aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#B9AEE8;gap:10px;}
+.doc-preview .d-ico{font-size:40px;}
+.field-conf{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.field-conf label{font-size:12.5px;font-weight:600;color:var(--ink-600);}
+
+.timeline{display:flex;flex-direction:column;}
+.tl-item{display:flex;gap:16px;padding-bottom:22px;position:relative;}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:6px;top:20px;bottom:0;width:2px;background:var(--line);}
+.tl-dot{width:14px;height:14px;border-radius:999px;background:var(--purple-600);flex-shrink:0;margin-top:3px;box-shadow:0 0 0 4px var(--purple-100);}
+.tl-item b{display:block;font-size:13.5px;color:var(--navy-950);}
+.tl-item span{font-size:12px;color:var(--ink-400);}
+
+.gis-box{background:var(--navy-950);border-radius:16px;padding:24px;}
+.gis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:14px;}
+.gis-cell{aspect-ratio:1;border-radius:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:9px;font-family:'JetBrains Mono';color:#8A7FB8;}
+.gis-cell.sel{background:linear-gradient(150deg,var(--purple-500),var(--purple-600));color:#fff;font-weight:700;border-color:transparent;}
+.gis-meta{color:#D9D1F8;font-size:12.5px;display:flex;flex-direction:column;gap:6px;}
+.gis-meta b{color:#fff;}
+
+.doc-list{display:flex;flex-direction:column;gap:10px;}
+.doc-row{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:12px;}
+.doc-row .d-left{display:flex;align-items:center;gap:12px;}
+.doc-row .d-ic{width:36px;height:36px;border-radius:10px;background:var(--lavender-100);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.doc-row b{font-size:13.5px;color:var(--navy-950);display:block;}
+.doc-row .locked{color:var(--ink-400);font-size:12px;}
+
+.stepper{display:flex;align-items:center;margin:6px 0 20px;}
+.stepper .st{flex:1;text-align:center;position:relative;}
+.stepper .st .sc{width:30px;height:30px;border-radius:999px;background:var(--lavender-100);color:var(--ink-400);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;margin:0 auto 8px;border:1.5px solid var(--line);}
+.stepper .st.on .sc{background:var(--purple-600);color:#fff;border-color:transparent;}
+.stepper .st span{font-size:11.5px;color:var(--ink-400);font-weight:600;}
+.stepper .st.on span{color:var(--navy-950);}
+.stepper .line{position:absolute;top:15px;left:-50%;right:50%;height:2px;background:var(--line);z-index:-1;}
+.stepper .st:first-child .line{display:none;}
+.stepper .st.on .line{background:var(--purple-600);}
+
+.toast-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;}
+.toast{background:var(--navy-950);color:#fff;padding:13px 20px;border-radius:12px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px;animation:toastin .2s ease;min-width:220px;}
+.toast.success{background:var(--green-600);}
+.toast.error{background:var(--red-600);}
+@keyframes toastin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.notif-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--lavender-100);}
+.notif-item:last-child{border-bottom:none;}
+.notif-item .n-ico{width:34px;height:34px;border-radius:10px;background:var(--purple-100);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.notif-item b{font-size:13.5px;color:var(--navy-950);}
+.notif-item span{font-size:12px;color:var(--ink-400);display:block;margin-top:2px;}
+
+.parcel-result{border:1.5px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.parcel-result:hover{border-color:var(--purple-500);}
+.parcel-result .p-left b{font-size:14.5px;color:var(--navy-950);display:block;margin-bottom:3px;}
+.parcel-result .p-left span{font-size:12.5px;color:var(--ink-400);}
+
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;}
+  .cards-3{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .grid-2,.grid-2-even{grid-template-columns:1fr;}
+  .kpi-grid,.kpi-grid.k5{grid-template-columns:repeat(2,1fr);}
+  .dash{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .split,.split-3{grid-template-columns:1fr;}
+  .split>div+div,.split-3>div+div{border-left:none;border-top:1px solid var(--line);}
+  .nav-links{display:none;}
+  .footer .wrap{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="modal-root"></div>
+<div id="toast-root" class="toast-wrap"></div>
+
+<script>
+/* =========================================================
+   STATE
+========================================================= */
+const S = {
+  view:'landing',           // landing | dashboard
+  role:null,                // citizen | operator | registrar
+  userName:null,
+  authModal:null,           // 'login' | 'register' | null
+  authRole:'citizen',
+  tab:{ operator:'dashboard', registrar:'dashboard', citizen:'dashboard' },
+  drawer:null,              // {type:'review-op'|'review-reg'|'reject', id}
+  citizenSearch:null,       // selected result object or null
+  toasts:[]
+};
+
+/* ---------------------- Mock data ---------------------- */
+let operatorDocs = [
+  {id:'LR-1025', type:'PDF', survey:'125/2', village:'Kinathukadavu', status:'review', confidence:62, owner:'Ravi Kumar', area:'2.5 acres'},
+  {id:'LR-1026', type:'Scan', survey:'88/1', village:'Anaimalai', status:'processing', confidence:null, owner:'Lakshmi N.', area:'1.2 acres'},
+  {id:'LR-1027', type:'Image', survey:'40/3', village:'Pollachi', status:'completed', confidence:96, owner:'Suresh M.', area:'3.0 acres'},
+  {id:'LR-1028', type:'Map', survey:'12/9', village:'Madukkarai', status:'review', confidence:71, owner:'Geetha R.', area:'0.9 acres'},
+  {id:'LR-1032', type:'PDF', survey:'55/4', village:'Sulur', status:'review', confidence:58, owner:'Karthik S.', area:'4.1 acres'},
+];
+let operatorActivity = [
+  {t:'10:32 AM', text:'Uploaded LR-1025'},
+  {t:'10:34 AM', text:'Corrected Area field on LR-1025'},
+  {t:'10:36 AM', text:'Submitted LR-1025 for verification'},
+  {t:'10:41 AM', text:'Uploaded LR-1026'},
+];
+let submittedRecords = [
+  {id:'LR-1020', survey:'125/1', village:'ABC', confidence:96, issue:false},
+];
+let registrarPending = [
+  {id:'LR-1025', survey:'125/2', village:'Kinathukadavu', confidence:96, issue:false, owner:'Ravi Kumar', area:'2.5 acres', operator:'D. Aravind'},
+  {id:'LR-1026', survey:'88/1', village:'Anaimalai', confidence:62, issue:true, owner:'Lakshmi N.', area:'1.2 acres', operator:'D. Aravind'},
+  {id:'LR-1027', survey:'40/3', village:'Pollachi', confidence:81, issue:true, owner:'Suresh M.', area:'3.0 acres', operator:'K. Priya'},
+];
+let registrarApproved = 145;
+let registrarAudit = [
+  {t:'10:20', text:'Operator uploaded document LR-1025'},
+  {t:'10:23', text:'AI extraction completed on LR-1025'},
+  {t:'10:28', text:'Operator corrected owner name on LR-1025'},
+  {t:'10:31', text:'LR-1025 submitted for verification'},
+];
+let discrepancies = [
+  {id:'DC-14', survey:'125/2', level:'High', text:'Historical record 2.50 acres vs current database 3.00 acres'},
+  {id:'DC-15', survey:'88/1', level:'Medium', text:'Owner name spelling mismatch across two records'},
+  {id:'DC-16', survey:'40/3', level:'Low', text:'Village name abbreviation inconsistency'},
+];
+let citizenMyRecords = [
+  {survey:'125/2', village:'Kinathukadavu', status:'verified'},
+  {survey:'130/1', village:'Madukkarai', status:'review'},
+];
+let citizenAllRecords = [
+  {survey:'125/2', village:'Kinathukadavu', taluk:'Pollachi', district:'Coimbatore', status:'verified', area:'2.50 acres', classification:'Agricultural'},
+  {survey:'130/1', village:'Madukkarai', taluk:'Coimbatore South', district:'Coimbatore', status:'review', area:'1.10 acres', classification:'Residential'},
+  {survey:'40/3', village:'Pollachi', taluk:'Pollachi', district:'Coimbatore', status:'discrepancy', area:'3.00 acres', classification:'Agricultural'},
+];
+let citizenRequests = [];
+let reqCounter = 1025;
+
+/* =========================================================
+   HELPERS
+========================================================= */
+function esc(s){return (s===undefined||s===null)?'':String(s);}
+function initials(name){return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+function toast(msg, kind){
+  const root = document.getElementById('toast-root');
+  const el = document.createElement('div');
+  el.className = 'toast'+(kind?(' '+kind):'');
+  el.innerHTML = (kind==='success'?'✓ ':kind==='error'?'⚠ ':'') + esc(msg);
+  root.appendChild(el);
+  setTimeout(()=>{ el.style.opacity='0'; el.style.transition='opacity .25s'; setTimeout(()=>el.remove(),250); }, 2600);
+}
+function confClass(c){ if(c===null||c===undefined) return ''; return c>=85?'conf-hi':c>=70?'conf-mid':'conf-lo'; }
+function statusBadge(status){
+  const map = {
+    processing:['badge-purple','Processing'],
+    review:['badge-amber','Needs Review'],
+    completed:['badge-green','Completed'],
+    verified:['badge-green','Verified'],
+    discrepancy:['badge-red','Discrepancy'],
+    submitted:['badge-purple','Submitted'],
+    approved:['badge-green','Approved'],
+    returned:['badge-red','Returned'],
+  };
+  const m = map[status] || ['badge-gray', status];
+  return `<span class="badge ${m[0]}">${m[1]}</span>`;
+}
+function closeModal(){ S.authModal=null; document.getElementById('modal-root').innerHTML=''; }
+function closeDrawer(){ S.drawer=null; document.getElementById('modal-root').innerHTML=''; }
+
+/* =========================================================
+   RENDER: ROOT ROUTER
+========================================================= */
+function render(){
+  const app = document.getElementById('app');
+  if(S.view==='landing'){ app.innerHTML = renderLanding(); }
+  else if(S.view==='dashboard' && S.role==='operator'){ app.innerHTML = renderOperatorShell(); }
+  else if(S.view==='dashboard' && S.role==='registrar'){ app.innerHTML = renderRegistrarShell(); }
+  else if(S.view==='dashboard' && S.role==='citizen'){ app.innerHTML = renderCitizenShell(); }
+}
+
+/* =========================================================
+   LANDING PAGE
+========================================================= */
+function renderLanding(){
+  return `
+  <header class="navbar">
+    <div class="wrap">
+      ${brandMark()}
+      <nav class="nav-links">
+        <a href="#home" data-scroll="home">Home</a>
+        <a href="#services" data-scroll="services">Services</a>
+        <a href="#about" data-scroll="about">About</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn btn-outline btn-sm" data-action="open-login">Login</button>
+        <button class="btn btn-primary btn-sm" data-action="open-register">Register</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">✦ AI-Verified Land Records</div>
+        <h1>Legacy land records, <em>made trustworthy</em> again.</h1>
+        <p class="lead">LandIntel digitizes decades-old land documents with OCR and AI, validates them against GIS parcel data, and gives officers, field teams and citizens one verified source of truth.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" data-action="open-register">Get Started →</button>
+          <button class="btn btn-outline" data-scroll="services">Explore Platform</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>12,400+</b><span>Records Digitized</span></div>
+          <div class="stat"><b>860+</b><span>Parcels Verified</span></div>
+          <div class="stat"><b>99.4%</b><span>Audit Integrity</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="float-badge badge-1">
+          <div class="ico">🛰️</div>
+          <div><b>GIS Verified</b><span>Parcel-matched data</span></div>
+        </div>
+        <div class="parcel-card">
+          <div class="tag"><span>PARCEL GRID · VILLAGE ABC</span><span>LIVE SCAN</span></div>
+          <div style="position:relative;">
+            <div class="parcel-grid">
+              ${Array.from({length:16}).map((_,i)=>`<div class="cell ${i===6?'active':''}"></div>`).join('')}
+            </div>
+            <div class="scan-line"></div>
+          </div>
+          <div class="parcel-footer"><span>Survey No. 125/2</span><span>Confidence 96%</span></div>
+        </div>
+        <div class="float-badge badge-2">
+          <div class="ico">🔒</div>
+          <div><b>256-bit Secured</b><span>Hash-chained audit trail</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">◆ Services</div>
+        <h2>One platform, three roles</h2>
+        <p>Every part of the land-record lifecycle — from field digitization to official approval to public search — lives in a single, access-controlled system.</p>
+      </div>
+      <div class="cards-3">
+        <div class="svc-card">
+          <div class="svc-icon" style="background:var(--purple-100);">⬆️</div>
+          <h3>Field Digitization</h3>
+          <p>Operators upload scanned deeds and registers; AI-powered OCR extracts owner, survey number, area and village fields automatically, ready for a quick human check.</p>
+          <span class="svc-link" data-action="open-register" data-role="operator">Join as Operator →</span>
+        </div>
+        <div class="svc-card">
+          <div class="svc-icon" style="background:var(--green-100);">✅</div>
+          <h3>Official Verification</h3>
+          <p>Registration Authorities review AI-extracted data against the original document, resolve discrepancies, and approve records into the master land register.</p>
+          <span class="svc-link" data-action="open-register" data-role="registrar">Join as Authority →</span>
+        </div>
+        <div class="svc-card">
+          <div class="svc-icon" style="background:var(--amber-100);">🔎</div>
+          <h3>Public Record Search</h3>
+          <p>Citizens search verified land parcels by district, taluk and village, view GIS boundaries and ownership history, and raise a request if something looks wrong.</p>
+          <span class="svc-link" data-action="open-register" data-role="citizen">Search Records →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <div class="eyebrow">◆ About LandIntel</div>
+          <h2>Built to close the gap between paper archives and public trust.</h2>
+          <p>Decades of handwritten and typed land records sit in fragile registers — inconsistent, hard to search, and easy to dispute. LandIntel combines OCR/HTR, NLP and GIS georeferencing with a confidence-scored validation engine and human-in-the-loop review, so every digitized record carries a clear, auditable chain of custody.</p>
+          <div class="pillar-list">
+            <div class="pillar"><div class="num">01</div><div><b>AI Extraction</b><span>OCR + NLP pulls structured fields from scanned deeds and registers.</span></div></div>
+            <div class="pillar"><div class="num">02</div><div><b>Human Verification</b><span>Operators and Registration Authorities check and approve every record.</span></div></div>
+            <div class="pillar"><div class="num">03</div><div><b>Tamper-Evident Audit</b><span>Every change is hash-chained, timestamped and traceable.</span></div></div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="stat-row"><span>Encryption standard</span><b>AES-256-GCM</b></div>
+          <div class="stat-row"><span>Audit chain</span><b>SHA-256 linked</b></div>
+          <div class="stat-row"><span>Discrepancies flagged</span><b>4,120</b></div>
+          <div class="stat-row"><span>Districts onboarded</span><b>6</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div>
+        ${brandMark(true)}
+        <p class="tag">An AI-assisted land record digitization, validation and public-access platform.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul><li><a data-scroll="home">Home</a></li><li><a data-scroll="services">Services</a></li><li><a data-scroll="about">About</a></li></ul>
+      </div>
+      <div>
+        <h4>Access</h4>
+        <ul><li><a href="#" data-action="open-login">Login</a></li><li><a href="#" data-action="open-register">Register</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul><li><a href="#">support@landintel.gov</a></li><li><a href="#">Help Center</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 LandIntel. All rights reserved.</div>
+  </footer>
+  `;
+}
+
+function brandMark(light){
+  return `<div class="brand">
+    <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10L12 4L20 10V20" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 20V14H15V20" stroke="white" stroke-width="1.8"/></svg></div>
+    <span>Land<span class="accent">Intel</span></span>
+  </div>`;
+}
+
+/* =========================================================
+   AUTH MODALS
+========================================================= */
+const ROLE_META = {
+  citizen:{ico:'👤', label:'Citizen'},
+  operator:{ico:'🖥️', label:'Operator'},
+  registrar:{ico:'🏛️', label:'Registration Authority'},
+};
+
+function rolePickerHTML(current){
+  return `<div class="role-picker">
+    ${Object.keys(ROLE_META).map(r=>`
+      <button type="button" class="role-pick ${current===r?'active':''}" data-action="pick-role" data-role="${r}">
+        <div class="r-ico">${ROLE_META[r].ico}</div>
+        <b>${ROLE_META[r].label}</b>
+      </button>`).join('')}
+  </div>`;
+}
+
+function openLoginModal(){
+  S.authModal='login';
+  document.getElementById('modal-root').innerHTML = `
+  <div class="modal-overlay" data-action="overlay-close">
+    <div class="modal" data-stop>
+      <div class="modal-head">
+        <div><h3>Welcome back</h3><p>Log in to your LandIntel account</p></div>
+        <button class="modal-close" data-action="close-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="field"><label>I am logging in as</label></div>
+        ${rolePickerHTML(S.authRole)}
+        <form data-form="login">
+          <div class="field"><label>Email address</label><input type="email" required placeholder="you@example.com" /></div>
+          <div class="field"><label>Password</label><input type="password" required placeholder="••••••••" /></div>
+          <button type="submit" class="btn btn-primary btn-block">Login as ${ROLE_META[S.authRole].label} →</button>
+        </form>
+        <p class="form-hint">Don't have an account? <a data-action="switch-register">Register here</a></p>
+      </div>
+    </div>
+  </div>`;
+}
+
+function openRegisterModal(presetRole){
+  S.authModal='register';
+  if(presetRole) S.authRole = presetRole;
+  document.getElementById('modal-root').innerHTML = `
+  <div class="modal-overlay" data-action="overlay-close">
+    <div class="modal" data-stop>
+      <div class="modal-head">
+        <div><h3>Create your account</h3><p>Choose your role to get the right dashboard</p></div>
+        <button class="modal-close" data-action="close-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        ${rolePickerHTML(S.authRole)}
+        <form data-form="register">
+          <div class="field"><label>Full name</label><input type="text" required placeholder="Your full name" /></div>
+          <div class="field"><label>Email address</label><input type="email" required placeholder="you@example.com" /></div>
+          <div class="field-row">
+            <div class="field"><label>Password</label><input type="password" required placeholder="••••••••" /></div>
+            <div class="field"><label>Confirm password</label><input type="password" required placeholder="••••••••" /></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Register as ${ROLE_META[S.authRole].label} →</button>
+        </form>
+        <p class="form-hint">Already have an account? <a data-action="switch-login">Login here</a></p>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* =========================================================
+   OPERATOR DASHBOARD
+========================================================= */
+const OP_NAV = [
+  {group:'Main', items:[['dashboard','📊','Dashboard']]},
+  {group:'Documents', items:[['documents','📄','All Documents'],['upload','⬆️','Upload Document'],['processing','🔄','Processing'],['review','✏️','Review Required'],['submitted','📤','Submitted']]},
+  {group:'Records', items:[['issues','⚠️','Issues']]},
+  {group:'Activity', items:[['activity','📜','My Activity']]},
+];
+
+function shellSidebar(navGroups, activeTab, roleKey){
+  return `<aside class="sidebar">
+    ${brandMark(true)}
+    ${navGroups.map(g=>`
+      <div class="side-group">
+        <div class="side-label">${g.group}</div>
+        ${g.items.map(([key,ic,label])=>`
+          <button class="side-link ${activeTab===key?'active':''}" data-action="nav" data-role="${roleKey}" data-tab="${key}">
+            <span class="ic">${ic}</span>${label}
+          </button>`).join('')}
+      </div>`).join('')}
+    <div class="side-bottom">
+      <button class="side-link" data-action="nav" data-role="${roleKey}" data-tab="settings"><span class="ic">⚙️</span>Settings</button>
+      <button class="side-link" data-action="logout"><span class="ic">↩️</span>Logout</button>
+    </div>
+  </aside>`;
+}
+
+function topbar(title, chip, name){
+  return `<div class="topbar">
+    <div class="topbar-title">${title} <span class="role-chip">${chip}</span></div>
+    <div class="topbar-right">
+      <button class="icon-btn" title="Help">❓</button>
+      <button class="icon-btn" title="Notifications">🔔</button>
+      <div class="avatar">${initials(name)}</div>
+    </div>
+  </div>`;
+}
+
+function renderOperatorShell(){
+  const tab = S.tab.operator;
+  return `<div class="dash">
+    ${shellSidebar(OP_NAV, tab, 'operator')}
+    <div class="main">
+      ${topbar('LandIntel', 'Operator', S.userName||'Operator')}
+      <div class="page">${renderOperatorPage(tab)}</div>
+    </div>
+  </div>`;
+}
+
+function renderOperatorPage(tab){
+  const counts = {
+    uploaded: operatorDocs.length,
+    processing: operatorDocs.filter(d=>d.status==='processing').length,
+    review: operatorDocs.filter(d=>d.status==='review').length,
+    completed: operatorDocs.filter(d=>d.status==='completed').length,
+  };
+  if(tab==='dashboard'){
+    const pct = Math.round((counts.completed/counts.uploaded)*100)||0;
+    return `
+    <div class="page-welcome"><h2>Good Morning, Operator 👋</h2><p>Here's today's digitization activity.</p></div>
+    <div class="kpi-grid k5">
+      ${kpi('Uploaded', counts.uploaded, '↑ 12% this week','up','📥','var(--purple-100)')}
+      ${kpi('Processing', counts.processing, 'Currently processing',null,'🔄','var(--amber-100)')}
+      ${kpi('Needs Review', counts.review, 'Requires attention',null,'⚠️','var(--red-100)')}
+      ${kpi('Submitted', submittedRecords.length, 'Sent for verification',null,'📤','var(--green-100)')}
+      ${kpi("Today's Progress", pct+'%', null, null, '📈', 'var(--purple-100)', pct)}
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-head"><h3>PROCESSING PIPELINE</h3></div>
+        <div class="panel-body">
+          <div class="stage-row">
+            <div class="stage"><b>${counts.uploaded}</b><span>Uploaded</span></div><div class="stage-arrow">→</div>
+            <div class="stage"><b>${counts.processing}</b><span>AI Processing</span></div><div class="stage-arrow">→</div>
+            <div class="stage"><b>${counts.review}</b><span>Needs Review</span></div><div class="stage-arrow">→</div>
+            <div class="stage"><b>${submittedRecords.length}</b><span>Submitted</span></div>
+          </div>
+          <div class="progress" style="margin-top:18px;"><i style="width:${pct}%"></i></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>QUICK ACTIONS</h3></div>
+        <div class="panel-body quick-actions">
+          <button class="qa-btn" data-action="nav" data-role="operator" data-tab="upload"><span class="ic">⬆️</span>Upload New Document</button>
+          <button class="qa-btn" data-action="nav" data-role="operator" data-tab="processing"><span class="ic">🔄</span>Continue Processing</button>
+          <button class="qa-btn" data-action="nav" data-role="operator" data-tab="review"><span class="ic">✏️</span>Review Extraction</button>
+          <button class="qa-btn" data-action="nav" data-role="operator" data-tab="submitted"><span class="ic">📤</span>View Submitted Records</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>RECENT DOCUMENTS</h3><button class="btn btn-ghost btn-sm" data-action="nav" data-role="operator" data-tab="documents">View all →</button></div>
+      <div class="panel-body">${docTable(operatorDocs.slice(0,5), true)}</div>
+    </div>`;
+  }
+  if(tab==='documents'){
+    return pageHead('All Documents','Every document uploaded for digitization.', uploadBtn())
+      + `<div class="panel"><div class="panel-body">${docTable(operatorDocs, true)}</div></div>`;
+  }
+  if(tab==='upload'){
+    return pageHead('Upload Document','Add a new legacy land record for AI processing.')
+    + `<div class="panel"><div class="panel-body">
+        <div class="upload-box">
+          <div class="u-ico">📄</div><b>Drag & drop your file here</b><span>or click Browse Files below</span>
+          <div style="margin-top:16px;"><button class="btn btn-outline btn-sm" data-action="fake-browse">Browse Files</button></div>
+        </div>
+        <form data-form="upload">
+          <div class="field-row">
+            <div class="field"><label>Document Type</label><select><option>Sale Deed</option><option>Mutation Record</option><option>Cadastral Map</option><option>Tax Record</option></select></div>
+            <div class="field"><label>State</label><select><option>Tamil Nadu</option></select></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>District</label><select><option>Coimbatore</option></select></div>
+            <div class="field"><label>Taluk</label><select><option>Pollachi</option><option>Sulur</option></select></div>
+          </div>
+          <div class="field"><label>Village</label><select><option>Kinathukadavu</option><option>Anaimalai</option><option>Madukkarai</option></select></div>
+          <button type="submit" class="btn btn-primary btn-block">Upload & Process</button>
+        </form>
+      </div></div>`;
+  }
+  if(tab==='processing'){
+    const proc = operatorDocs.filter(d=>d.status==='processing');
+    if(proc.length===0) return pageHead('Processing','Documents currently going through AI extraction.') + emptyState('✅','Nothing processing right now','Upload a document to start the AI pipeline.');
+    return pageHead('Processing','Documents currently going through AI extraction.')
+    + proc.map(d=>`
+      <div class="panel" style="margin-bottom:16px;">
+        <div class="panel-head"><h3>DOCUMENT ${d.id}</h3>${statusBadge('processing')}</div>
+        <div class="panel-body checklist">
+          ${checkStep('done','File uploaded')}${checkStep('done','Security check')}${checkStep('done','Document encrypted')}
+          ${checkStep('done','Image enhancement')}${checkStep('active','OCR processing')}
+          ${checkStep('pending','Field extraction')}${checkStep('pending','Validation')}${checkStep('pending','Confidence scoring')}${checkStep('pending','Ready for review')}
+        </div>
+      </div>`).join('');
+  }
+  if(tab==='review'){
+    const rev = operatorDocs.filter(d=>d.status==='review');
+    if(rev.length===0) return pageHead('Review Required','Documents where AI extraction needs your check.') + emptyState('🎉','All caught up','No documents currently need review.');
+    return pageHead('Review Required','Documents where AI extraction needs your check.')
+    + `<div class="panel"><div class="panel-body">${docTable(rev,true,true)}</div></div>`;
+  }
+  if(tab==='submitted'){
+    if(submittedRecords.length===0) return pageHead('Submitted','Records sent for officer verification.') + emptyState('📤','Nothing submitted yet','Records you submit for verification will appear here.');
+    return pageHead('Submitted','Records sent for officer verification.')
+    + `<div class="panel"><div class="panel-body"><table><thead><tr><th>Record</th><th>Survey No</th><th>Village</th><th>Confidence</th><th>Status</th></tr></thead><tbody>
+        ${submittedRecords.map(r=>`<tr><td class="mono">${r.id}</td><td>${r.survey}</td><td>${r.village}</td><td class="conf ${confClass(r.confidence)}">${r.confidence}%</td><td>${statusBadge('submitted')}</td></tr>`).join('')}
+      </tbody></table></div></div>`;
+  }
+  if(tab==='issues'){
+    const issues = operatorDocs.filter(d=>d.confidence!==null && d.confidence<75);
+    return pageHead('Issues','Documents flagged with low-confidence extraction.')
+    + `<div class="panel"><div class="panel-body attention-list">
+        ${issues.map(d=>`<div class="attention-item">
+          <div class="a-left"><b>${d.id} · ${d.survey}</b><span>Extraction confidence below threshold</span></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span class="conf conf-lo">${d.confidence}%</span><button class="btn btn-outline btn-sm" data-action="open-review-op" data-id="${d.id}">Review →</button></div>
+        </div>`).join('') || emptyState('✅','No open issues','All documents are within confidence threshold.')}
+      </div></div>`;
+  }
+  if(tab==='activity'){
+    return pageHead('My Activity','A log of your own actions on this platform.')
+    + `<div class="panel"><div class="panel-body timeline">
+        ${operatorActivity.slice().reverse().map(a=>`<div class="tl-item"><div class="tl-dot"></div><div><b>${a.text}</b><span>${a.t}</span></div></div>`).join('')}
+      </div></div>`;
+  }
+  if(tab==='settings'){
+    return settingsPage(S.userName||'Operator', ROLE_META.operator.label);
+  }
+  return '';
+}
+
+function kpi(label,val,sub,subClass,ic,bg,progress){
+  return `<div class="kpi-card">
+    <div class="kpi-top"><span class="kpi-label">${label}</span><div class="kpi-ic" style="background:${bg}">${ic}</div></div>
+    <div class="kpi-val">${val}</div>
+    ${sub?`<div class="kpi-sub ${subClass||''}">${sub}</div>`:''}
+    ${progress!==undefined?`<div class="progress"><i style="width:${progress}%"></i></div>`:''}
+  </div>`;
+}
+function pageHead(title, sub, rightBtn){
+  return `<div class="page-head-row"><div class="page-welcome" style="margin-bottom:0;"><h2>${title}</h2><p>${sub}</p></div>${rightBtn||''}</div>`;
+}
+function uploadBtn(){ return `<button class="btn btn-primary" data-action="nav" data-role="operator" data-tab="upload">+ Upload Document</button>`; }
+function emptyState(ic,title,sub){ return `<div class="panel"><div class="empty-state"><div class="e-ico">${ic}</div><h4>${title}</h4><p>${sub}</p></div></div>`; }
+function checkStep(state,label){
+  const dot = state==='done'?'✓':state==='active'?'●':'';
+  return `<div class="check-step ${state}"><div class="c-dot">${dot}</div><span>${label}</span></div>`;
+}
+function docTable(docs, withAction, reviewMode){
+  return `<table><thead><tr><th>Document</th><th>Type</th><th>Village</th><th>Status</th><th>Confidence</th>${withAction?'<th></th>':''}</tr></thead><tbody>
+    ${docs.map(d=>`<tr>
+      <td class="mono"><b>${d.id}</b></td><td>${d.type}</td><td>${d.village}</td><td>${statusBadge(d.status)}</td>
+      <td>${d.confidence!==null?`<span class="conf ${confClass(d.confidence)}">${d.confidence}%</span>`:'—'}</td>
+      ${withAction?`<td><button class="btn btn-ghost btn-sm" data-action="${reviewMode||d.status==='review'?'open-review-op':'view-doc'}" data-id="${d.id}">${d.status==='review'?'Review →':'View →'}</button></td>`:''}
+    </tr>`).join('')}
+  </tbody></table>`;
+}
+
+function settingsPage(name, roleLabel){
+  return pageHead('Settings','Manage your profile and preferences.')
+  + `<div class="panel"><div class="panel-body">
+      <div class="field"><label>Full name</label><input type="text" value="${name}" /></div>
+      <div class="field"><label>Role</label><input type="text" value="${roleLabel}" disabled /></div>
+      <div class="field"><label>Email notifications</label><select><option>All activity</option><option>Only important updates</option><option>None</option></select></div>
+      <button class="btn btn-primary" data-action="save-settings">Save Changes</button>
+    </div></div>`;
+}
+
+/* =========================================================
+   REGISTRATION AUTHORITY DASHBOARD
+========================================================= */
+const REG_NAV = [
+  {group:'Main', items:[['dashboard','📊','Dashboard']]},
+  {group:'Verification', items:[['pending','📥','Pending'],['records','🗂️','Land Records']]},
+  {group:'Oversight', items:[['discrepancy','⚠️','Discrepancy'],['history','🕒','History'],['audit','📜','Audit']]},
+  {group:'Insights', items:[['analytics','📊','Analytics']]},
+];
+
+function renderRegistrarShell(){
+  const tab = S.tab.registrar;
+  return `<div class="dash">
+    ${shellSidebar(REG_NAV, tab, 'registrar')}
+    <div class="main">
+      ${topbar('LandIntel', 'Registration Authority', S.userName||'Authority')}
+      <div class="page">${renderRegistrarPage(tab)}</div>
+    </div>
+  </div>`;
+}
+
+function renderRegistrarPage(tab){
+  const pending = registrarPending.length;
+  const issues = registrarPending.filter(r=>r.issue).length;
+  if(tab==='dashboard'){
+    return `
+    <div class="page-welcome"><h2>Good Morning, Authority 👋</h2><p>Records awaiting your verification.</p></div>
+    <div class="kpi-grid">
+      ${kpi('Pending', pending, 'Awaiting review',null,'📥','var(--purple-100)')}
+      ${kpi('Reviewed', 18, 'This week',null,'🔍','var(--amber-100)')}
+      ${kpi('Approved', registrarApproved, 'All time',null,'✅','var(--green-100)')}
+      ${kpi('Issues', issues, 'Flagged discrepancies',null,'⚠️','var(--red-100)')}
+    </div>
+    <div class="panel" style="margin-bottom:26px;">
+      <div class="panel-head"><h3>RECORDS NEEDING REVIEW</h3><button class="btn btn-ghost btn-sm" data-action="nav" data-role="registrar" data-tab="pending">View all →</button></div>
+      <div class="panel-body">${pendingTable(registrarPending.slice(0,4))}</div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>RECENT ACTIVITY</h3></div>
+      <div class="panel-body timeline">
+        ${registrarAudit.slice().reverse().slice(0,4).map(a=>`<div class="tl-item"><div class="tl-dot"></div><div><b>${a.text}</b><span>${a.t}</span></div></div>`).join('')}
+      </div>
+    </div>`;
+  }
+  if(tab==='pending'){
+    if(registrarPending.length===0) return pageHead('Pending Verification','Records submitted by operators.') + emptyState('🎉','Queue clear','No records currently awaiting verification.');
+    return pageHead('Pending Verification','Records submitted by operators, ordered by submission time.')
+    + `<div class="panel"><div class="panel-body">${pendingTable(registrarPending)}</div></div>`;
+  }
+  if(tab==='records'){
+    return pageHead('Land Records','All records that have completed the verification process.')
+    + `<div class="panel"><div class="panel-body">
+        <table><thead><tr><th>Survey No</th><th>Village</th><th>Status</th><th>Approved On</th></tr></thead><tbody>
+          <tr><td class="mono">125/1</td><td>ABC</td><td>${statusBadge('approved')}</td><td>18 Aug 2026</td></tr>
+          <tr><td class="mono">99/2</td><td>Sulur</td><td>${statusBadge('approved')}</td><td>15 Aug 2026</td></tr>
+          <tr><td class="mono">31/6</td><td>Anaimalai</td><td>${statusBadge('approved')}</td><td>10 Aug 2026</td></tr>
+        </tbody></table>
+      </div></div>`;
+  }
+  if(tab==='discrepancy'){
+    const counts = {High:0,Medium:0,Low:0};
+    discrepancies.forEach(d=>counts[d.level]++);
+    return pageHead('Discrepancy Review','Cases where records conflict with historical data.')
+    + `<div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);">
+        ${kpi('High', counts.High, 'Needs urgent review',null,'🔴','var(--red-100)')}
+        ${kpi('Medium', counts.Medium, 'Review this week',null,'🟠','var(--amber-100)')}
+        ${kpi('Low', counts.Low, 'Minor inconsistency',null,'🟡','var(--purple-100)')}
+      </div>
+      <div class="panel"><div class="panel-body attention-list">
+        ${discrepancies.map(d=>`<div class="attention-item">
+          <div class="a-left"><b>${d.id} · Survey ${d.survey}</b><span>${d.text}</span></div>
+          <div style="display:flex;gap:8px;align-items:center;"><span class="badge ${d.level==='High'?'badge-red':d.level==='Medium'?'badge-amber':'badge-purple'}">${d.level}</span>
+          <button class="btn btn-outline btn-sm" data-action="resolve-case" data-id="${d.id}">Resolve Case</button></div>
+        </div>`).join('')}
+      </div></div>`;
+  }
+  if(tab==='history'){
+    return pageHead('Historical Timeline','Trace a parcel\'s record across decades.')
+    + `<div class="panel"><div class="panel-body timeline">
+        ${tl('1985','Ownership Record created')}${tl('1998','Mutation recorded')}${tl('2008','Registration updated')}${tl('2015','Tax record filed')}${tl('2026','Current digitized record')}
+      </div></div>`;
+  }
+  if(tab==='audit'){
+    return pageHead('Audit / Change History','Every change is logged and cannot be edited.')
+    + `<div class="panel"><div class="panel-body timeline">
+        ${registrarAudit.slice().reverse().map(a=>`<div class="tl-item"><div class="tl-dot"></div><div><b>${a.text}</b><span>${a.t}</span></div></div>`).join('')}
+      </div></div>`;
+  }
+  if(tab==='analytics'){
+    return pageHead('Analytics','Verification throughput and extraction quality.')
+    + `<div class="grid-2-even">
+      <div class="panel"><div class="panel-head"><h3>RECORDS PROCESSED (THIS WEEK)</h3></div>
+        <div class="panel-body bar-list">
+          ${['Mon','Tue','Wed','Thu','Fri'].map((d,i)=>{
+            const vals=[18,26,14,30,22]; return `<div class="bar-item"><div class="bar-top"><span>${d}</span><b>${vals[i]}</b></div><div class="bar-track"><i class="bar-purple" style="width:${vals[i]*3}%"></i></div></div>`;
+          }).join('')}
+        </div></div>
+      <div class="panel"><div class="panel-head"><h3>AI EXTRACTION CONFIDENCE</h3></div>
+        <div class="panel-body bar-list">
+          <div class="bar-item"><div class="bar-top"><span>High</span><b>78%</b></div><div class="bar-track"><i class="bar-green" style="width:78%"></i></div></div>
+          <div class="bar-item"><div class="bar-top"><span>Medium</span><b>15%</b></div><div class="bar-track"><i class="bar-amber" style="width:15%"></i></div></div>
+          <div class="bar-item"><div class="bar-top"><span>Low</span><b>7%</b></div><div class="bar-track"><i class="bar-red" style="width:7%"></i></div></div>
+        </div></div>
+    </div>`;
+  }
+  if(tab==='settings'){ return settingsPage(S.userName||'Authority', ROLE_META.registrar.label); }
+  return '';
+}
+function tl(year,text){ return `<div class="tl-item"><div class="tl-dot"></div><div><b>${text}</b><span>${year}</span></div></div>`; }
+function pendingTable(rows){
+  return `<table><thead><tr><th>Survey</th><th>Village</th><th>AI Score</th><th>Issue</th><th></th></tr></thead><tbody>
+    ${rows.map(r=>`<tr>
+      <td class="mono">${r.survey}</td><td>${r.village}</td>
+      <td><span class="conf ${confClass(r.confidence)}">${r.confidence}%</span></td>
+      <td>${r.issue?'<span class="badge badge-amber">⚠️ Yes</span>':'<span class="badge badge-gray">—</span>'}</td>
+      <td><button class="btn btn-outline btn-sm" data-action="open-review-reg" data-id="${r.id}">Review →</button></td>
+    </tr>`).join('')}
+  </tbody></table>`;
+}
+
+/* =========================================================
+   CITIZEN DASHBOARD
+========================================================= */
+const CIT_NAV = [
+  {group:'Main', items:[['dashboard','📊','Dashboard']]},
+  {group:'Records', items:[['search','🔎','Search'],['myparcels','🗺️','My Parcels'],['documents','📄','Documents']]},
+  {group:'Support', items:[['requests','📝','Requests'],['history','📜','History'],['notifications','🔔','Notifications']]},
+];
+
+function renderCitizenShell(){
+  const tab = S.tab.citizen;
+  return `<div class="dash">
+    ${shellSidebar(CIT_NAV, tab, 'citizen')}
+    <div class="main">
+      ${topbar('LandIntel', 'Citizen', S.userName||'Citizen')}
+      <div class="page">${renderCitizenPage(tab)}</div>
+    </div>
+  </div>`;
+}
+
+function renderCitizenPage(tab){
+  if(tab==='dashboard' || tab==='search'){
+    return `
+    <div class="page-welcome"><h2>Welcome 👋</h2><p>Search and view your land records.</p></div>
+    <div class="panel" style="margin-bottom:26px;">
+      <div class="panel-head"><h3>🔎 SEARCH LAND RECORD</h3></div>
+      <div class="panel-body">
+        <form data-form="citizen-search">
+          <div class="field-row">
+            <div class="field"><label>District</label><select><option>Coimbatore</option></select></div>
+            <div class="field"><label>Taluk</label><select><option>Pollachi</option><option>Coimbatore South</option></select></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Village</label><select><option value="">Any</option><option>Kinathukadavu</option><option>Madukkarai</option><option>Pollachi</option></select></div>
+            <div class="field"><label>Survey No.</label><input type="text" placeholder="e.g. 125/2" /></div>
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      </div>
+    </div>
+    ${S.citizenSearchResults ? searchResultsBlock() : ''}
+    <div class="panel">
+      <div class="panel-head"><h3>MY RECENT RECORDS</h3></div>
+      <div class="panel-body">
+        ${citizenMyRecords.map(r=>`<div class="parcel-result">
+          <div class="p-left"><b>Survey ${r.survey}</b><span>${r.village}</span></div>
+          <div style="display:flex;align-items:center;gap:12px;">${statusBadge(r.status)}<button class="btn btn-outline btn-sm" data-action="view-parcel" data-survey="${r.survey}">View →</button></div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+  if(tab==='myparcels'){
+    return pageHead('My Parcels','Parcels associated with your verified identity.')
+    + `<div class="panel"><div class="panel-body">
+        <table><thead><tr><th>Survey</th><th>Village</th><th>Status</th><th></th></tr></thead><tbody>
+        ${citizenMyRecords.map(r=>`<tr><td class="mono">${r.survey}</td><td>${r.village}</td><td>${statusBadge(r.status)}</td><td><button class="btn btn-ghost btn-sm" data-action="view-parcel" data-survey="${r.survey}">View →</button></td></tr>`).join('')}
+        </tbody></table>
+      </div></div>`;
+  }
+  if(tab==='documents'){
+    return pageHead('Documents','Access to documents depends on record type and permission level.')
+    + `<div class="panel"><div class="panel-body doc-list">
+        <div class="doc-row"><div class="d-left"><div class="d-ic">📄</div><div><b>Land Record</b><span style="font-size:12px;color:var(--ink-400)">Survey 125/2</span></div></div><button class="btn btn-outline btn-sm" data-action="view-doc-public">View</button></div>
+        <div class="doc-row"><div class="d-left"><div class="d-ic">📄</div><div><b>Mutation Record</b><span style="font-size:12px;color:var(--ink-400)">Survey 125/2</span></div></div><button class="btn btn-outline btn-sm" data-action="view-doc-public">View</button></div>
+        <div class="doc-row"><div class="d-left"><div class="d-ic">🔒</div><div><b>Registration Record</b><span class="locked">Restricted</span></div></div><button class="btn btn-ghost btn-sm" disabled>Restricted</button></div>
+        <div class="doc-row"><div class="d-left"><div class="d-ic">🔒</div><div><b>Internal Officer Document</b><span class="locked">Restricted</span></div></div><button class="btn btn-ghost btn-sm" disabled>Restricted</button></div>
+      </div></div>`;
+  }
+  if(tab==='requests'){
+    return pageHead('Requests','Report an issue with a land record and track its status.', `<button class="btn btn-primary" data-action="open-request-form">+ New Request</button>`)
+    + (citizenRequests.length? `<div class="panel"><div class="panel-body">
+        ${citizenRequests.map(r=>`<div style="margin-bottom:22px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <b style="color:var(--navy-950);">Request #${r.id}</b><span style="font-size:12.5px;color:var(--ink-400)">${r.type}</span>
+          </div>
+          <div class="stepper">
+            ${['Submitted','Under Review','Action Taken','Resolved'].map((s,i)=>`
+              <div class="st ${i<=r.stage?'on':''}"><div class="line"></div><div class="sc">${i+1}</div><span>${s}</span></div>`).join('')}
+          </div>
+        </div>`).join('')}
+      </div></div>` : emptyState('📝','No requests yet','Raise a request if something looks wrong with your record.'));
+  }
+  if(tab==='history'){
+    return pageHead('Ownership / Record Timeline','Publicly available historical information for your parcel.')
+    + `<div class="panel"><div class="panel-body timeline">
+        ${tl('1985','Ownership Record')}${tl('1998','Mutation')}${tl('2008','Registration')}${tl('2015','Tax Record')}${tl('2026','Current Record')}
+      </div></div>`;
+  }
+  if(tab==='notifications'){
+    return pageHead('Notifications','Updates about your records and requests.')
+    + `<div class="panel"><div class="panel-body">
+        <div class="notif-item"><div class="n-ico">✅</div><div><b>Your record for Survey 125/2 has been verified.</b><span>2 days ago</span></div></div>
+        <div class="notif-item"><div class="n-ico">🕒</div><div><b>Request #1020 is under review.</b><span>5 days ago</span></div></div>
+        <div class="notif-item"><div class="n-ico">🎉</div><div><b>Your submitted request has been resolved.</b><span>1 week ago</span></div></div>
+      </div></div>`;
+  }
+  if(tab==='settings'){ return settingsPage(S.userName||'Citizen', ROLE_META.citizen.label); }
+  return '';
+}
+
+function searchResultsBlock(){
+  const results = S.citizenSearchResults;
+  if(results.length===0){
+    return `<div class="panel" style="margin-bottom:26px;"><div class="empty-state"><div class="e-ico">🔍</div><h4>No matching parcel found</h4><p>Try adjusting the district, taluk or survey number.</p></div></div>`;
+  }
+  return `<div class="panel" style="margin-bottom:26px;"><div class="panel-head"><h3>SEARCH RESULTS</h3></div><div class="panel-body">
+    ${results.map(r=>`<div class="parcel-result">
+      <div class="p-left"><b>Survey ${r.survey} · ${r.village}</b><span>${r.taluk}, ${r.district}</span></div>
+      <div style="display:flex;align-items:center;gap:12px;">${statusBadge(r.status)}<button class="btn btn-primary btn-sm" data-action="view-parcel" data-survey="${r.survey}">View →</button></div>
+    </div>`).join('')}
+  </div></div>`;
+}
+
+function parcelDetailModal(survey){
+  const r = citizenAllRecords.find(x=>x.survey===survey) || citizenAllRecords[0];
+  document.getElementById('modal-root').innerHTML = `
+  <div class="modal-overlay" data-action="overlay-close">
+    <div class="modal modal-wide" data-stop>
+      <div class="modal-head"><div><h3>Land Parcel · Survey ${r.survey}</h3><p>${r.village}, ${r.taluk}, ${r.district}</p></div><button class="modal-close" data-action="close-modal">✕</button></div>
+      <div class="modal-body">
+        <div class="grid-2-even" style="margin-bottom:0;">
+          <div class="panel"><div class="panel-body">
+            <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><span style="color:var(--ink-400);font-size:13px;">Status</span>${statusBadge(r.status)}</div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><span style="color:var(--ink-400);font-size:13px;">Area</span><b>${r.area}</b></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><span style="color:var(--ink-400);font-size:13px;">Classification</span><b>${r.classification}</b></div>
+            ${r.status==='discrepancy'?'<div class="err-text" style="display:block;margin-top:10px;">⚠️ A discrepancy has been identified and is currently under review.</div>':''}
+            <div style="margin-top:16px;display:flex;gap:10px;">
+              <button class="btn btn-outline btn-sm" data-action="open-request-form" data-survey="${r.survey}">Report Issue</button>
+            </div>
+          </div></div>
+          <div class="gis-box">
+            <div class="gis-grid">${Array.from({length:9}).map((_,i)=>`<div class="gis-cell ${i===4?'sel':''}">${i===4?r.survey:''}</div>`).join('')}</div>
+            <div class="gis-meta"><b>Survey ${r.survey}</b><span>Selected parcel highlighted</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function requestFormModal(survey){
+  document.getElementById('modal-root').innerHTML = `
+  <div class="modal-overlay" data-action="overlay-close">
+    <div class="modal" data-stop>
+      <div class="modal-head"><div><h3>Report / Request</h3><p>Let us know if something looks wrong with a record.</p></div><button class="modal-close" data-action="close-modal">✕</button></div>
+      <div class="modal-body">
+        <form data-form="citizen-request">
+          <div class="field"><label>Related survey no. (optional)</label><input type="text" value="${survey||''}" /></div>
+          <div class="field"><label>Type</label><select><option>Record Issue</option><option>Ownership Dispute</option><option>Area Mismatch</option><option>Other</option></select></div>
+          <div class="field"><label>Description</label><textarea rows="4" required placeholder="Describe the issue..."></textarea></div>
+          <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
+        </form>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* =========================================================
+   REVIEW DRAWERS (Operator / Registrar)
+========================================================= */
+function openOperatorReview(id){
+  const d = operatorDocs.find(x=>x.id===id);
+  if(!d) return;
+  document.getElementById('modal-root').innerHTML = `
+  <div class="modal-overlay" data-action="overlay-close">
+    <div class="modal modal-xwide" data-stop>
+      <div class="modal-head"><div><h3>Review Extraction · ${d.id}</h3><p>Correct any fields the AI extracted incorrectly, then submit for officer verification.</p></div><button class="modal-close" data-action="close-modal">✕</button></div>
+      <div class="modal-body" style="padding:0;">
+        <div class="split">
+          <div>
+            <div class="doc-preview"><div class="d-ico">📄</div><span>${d.id} · ${d.type} original</span></div>
+          </div>
+          <div>
+            <h4 style="margin:0 0 16px;font-size:13.5px;color:var(--ink-400);text-transform:uppercase;letter-spacing:.04em;">Extracted Data</h4>
+            <form data-form="op-review" data-id="${d.id}">
+              ${reviewField('Owner Name', d.owner, 96)}
+              ${reviewField('Survey Number', d.survey, 98)}
+              ${reviewField('Area', d.area, d.confidence)}
+              ${reviewField('Village', d.village, 94)}
+              ${d.confidence<75?`<div class="err-text" style="display:block;">⚠️ Area needs attention — confidence below threshold.</div>`:''}
+              <div style="display:flex;gap:10px;margin-top:18px;">
+                <button type="button" class="btn btn-outline" data-action="save-review-op" data-id="${d.id}">Save</button>
+                <button type="submit" class="btn btn-primary">Submit for Verification →</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+function reviewField(label,val,conf){
+  return `<div class="field"><div class="field-conf"><label>${label}</label><span class="conf ${confClass(conf)}">${conf}%</span></div><input type="text" value="${val}" /></div>`;
+}
+
+function openRegistrarReview(id){
+  const r = registrarPending.find(x=>x.id===id);
+  if(!r) return;
+  document.getElementById('modal-root').innerHTML = `
+  <div class="modal-overlay" data-action="overlay-close">
+    <div class="modal modal-xwide" data-stop>
+      <div class="modal-head"><div><h3>Record Review · ${r.id}</h3><p>Submitted by ${r.operator} · Survey ${r.survey}, ${r.village}</p></div><button class="modal-close" data-action="close-modal">✕</button></div>
+      <div class="modal-body" style="padding:0;">
+        <div class="split-3">
+          <div><div class="doc-preview" style="aspect-ratio:auto;height:100%;min-height:260px;"><div class="d-ico">📄</div><span>Original document</span></div></div>
+          <div>
+            <h4 style="margin:0 0 16px;font-size:13.5px;color:var(--ink-400);text-transform:uppercase;">Extracted Data</h4>
+            <form data-form="reg-review" data-id="${r.id}">
+              ${reviewField('Owner Name', r.owner, 90)}
+              ${reviewField('Survey Number', r.survey, 98)}
+              ${reviewField('Area', r.area, r.confidence)}
+              ${reviewField('Village', r.village, 92)}
+              <button type="button" class="btn btn-outline btn-sm" data-action="save-review-reg-field" data-id="${r.id}" style="margin-top:8px;">Save Changes</button>
+            </form>
+          </div>
+          <div>
+            <h4 style="margin:0 0 16px;font-size:13.5px;color:var(--ink-400);text-transform:uppercase;">Validation</h4>
+            <div class="bar-list" style="margin-bottom:18px;">
+              <div class="bar-item"><div class="bar-top"><span>Survey valid</span><b>✓</b></div></div>
+              <div class="bar-item"><div class="bar-top"><span>Village matched</span><b>✓</b></div></div>
+              <div class="bar-item"><div class="bar-top"><span>Area check</span><b>${r.issue?'⚠':'✓'}</b></div></div>
+            </div>
+            <div class="kpi-card" style="margin-bottom:18px;"><div class="kpi-top"><span class="kpi-label">Confidence</span></div><div class="kpi-val" style="font-size:24px;">${r.confidence}%</div></div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <button class="btn btn-success" data-action="approve-record" data-id="${r.id}">✓ Approve Record</button>
+              <button class="btn btn-danger" data-action="open-reject" data-id="${r.id}">Reject / Return</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function rejectModal(id){
+  document.getElementById('modal-root').innerHTML = `
+  <div class="modal-overlay" data-action="overlay-close">
+    <div class="modal" data-stop>
+      <div class="modal-head"><div><h3>Reject / Return Record</h3><p>${id} will be sent back to the operator for correction.</p></div><button class="modal-close" data-action="close-modal">✕</button></div>
+      <div class="modal-body">
+        <form data-form="reject-record" data-id="${id}">
+          <div class="field"><label>Reason</label><textarea rows="4" required placeholder="e.g. Survey number is unclear in the scanned document. Please reprocess."></textarea></div>
+          <button type="submit" class="btn btn-danger btn-block">Return to Operator</button>
+        </form>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* =========================================================
+   EVENT HANDLING
+========================================================= */
+document.addEventListener('click', function(e){
+  const scrollEl = e.target.closest('[data-scroll]');
+  if(scrollEl){
+    e.preventDefault();
+    if(S.view!=='landing'){ S.view='landing'; S.role=null; render(); requestAnimationFrame(()=>scrollToId(scrollEl.dataset.scroll)); }
+    else scrollToId(scrollEl.dataset.scroll);
+    return;
+  }
+
+  const btn = e.target.closest('[data-action]');
+  if(!btn) {
+    // click on overlay backdrop itself closes modal
+    if(e.target.classList && e.target.classList.contains('modal-overlay')) closeModal();
+    return;
+  }
+  const action = btn.dataset.action;
+
+  switch(action){
+    case 'open-login': openLoginModal(); break;
+    case 'open-register': openRegisterModal(btn.dataset.role); break;
+    case 'switch-register': openRegisterModal(); break;
+    case 'switch-login': openLoginModal(); break;
+    case 'close-modal': closeModal(); closeDrawer(); break;
+    case 'overlay-close': if(e.target===btn) { closeModal(); closeDrawer(); } break;
+    case 'pick-role':
+      S.authRole = btn.dataset.role;
+      if(S.authModal==='login') openLoginModal(); else openRegisterModal();
+      break;
+    case 'nav':
+      S.tab[btn.dataset.role] = btn.dataset.tab;
+      render();
+      break;
+    case 'logout':
+      S.view='landing'; S.role=null; S.userName=null;
+      render();
+      toast('You have been logged out.');
+      break;
+    case 'fake-browse':
+      toast('Choose a file from your device (demo mode).'); break;
+    case 'open-review-op': openOperatorReview(btn.dataset.id); break;
+    case 'save-review-op':
+      toast('Changes saved.', 'success'); break;
+    case 'open-review-reg': openRegistrarReview(btn.dataset.id); break;
+    case 'save-review-reg-field':
+      toast('Field changes saved.', 'success'); break;
+    case 'approve-record': approveRecord(btn.dataset.id); break;
+    case 'open-reject': rejectModal(btn.dataset.id); break;
+    case 'resolve-case':
+      discrepancies = discrepancies.filter(d=>d.id!==btn.dataset.id);
+      closeModal();
+      toast('Case marked resolved.', 'success');
+      render();
+      break;
+    case 'view-doc': toast('Opening document preview...'); break;
+    case 'view-doc-public': toast('Opening document (view-only)...'); break;
+    case 'view-parcel': parcelDetailModal(btn.dataset.survey); break;
+    case 'open-request-form': requestFormModal(btn.dataset.survey); break;
+    case 'save-settings': toast('Settings saved.', 'success'); break;
+    default: break;
+  }
+});
+
+function scrollToId(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
+
+function approveRecord(id){
+  const idx = registrarPending.findIndex(x=>x.id===id);
+  if(idx<0) return;
+  const r = registrarPending[idx];
+  registrarPending.splice(idx,1);
+  registrarApproved += 1;
+  registrarAudit.push({t: nowTime(), text:`Authority approved record ${r.id}`});
+  closeModal();
+  toast(`${r.id} approved and added to master land record.`, 'success');
+  render();
+}
+function nowTime(){
+  const d = new Date();
+  let h = d.getHours(), m = d.getMinutes();
+  const ampm = h>=12?'PM':'AM'; h = h%12 || 12;
+  return `${h}:${String(m).padStart(2,'0')} ${ampm}`;
+}
+
+/* ---------------------- Form submits ---------------------- */
+document.addEventListener('submit', function(e){
+  const form = e.target;
+  if(!form.dataset || !form.dataset.form) return;
+  e.preventDefault();
+  const kind = form.dataset.form;
+
+  if(kind==='login'){
+    S.role = S.authRole;
+    S.userName = ROLE_META[S.authRole].label + ' User';
+    S.view = 'dashboard';
+    closeModal();
+    render();
+    toast(`Welcome back! Logged in as ${ROLE_META[S.authRole].label}.`, 'success');
+  }
+  else if(kind==='register'){
+    const nameInput = form.querySelector('input[type="text"]');
+    const pass = form.querySelectorAll('input[type="password"]');
+    if(pass[0] && pass[1] && pass[0].value !== pass[1].value){
+      toast('Passwords do not match.', 'error'); return;
+    }
+    S.role = S.authRole;
+    S.userName = nameInput && nameInput.value ? nameInput.value : (ROLE_META[S.authRole].label+' User');
+    S.view = 'dashboard';
+    closeModal();
+    render();
+    toast(`Account created. Welcome to LandIntel, ${S.userName}!`, 'success');
+  }
+  else if(kind==='upload'){
+    const newId = 'LR-'+(1029+Math.floor(Math.random()*90));
+    operatorDocs.unshift({id:newId, type:'PDF', survey:'—', village:'Kinathukadavu', status:'processing', confidence:null, owner:'—', area:'—'});
+    operatorActivity.push({t: nowTime(), text:`Uploaded ${newId}`});
+    S.tab.operator = 'processing';
+    render();
+    toast(`${newId} uploaded and queued for AI processing.`, 'success');
+    setTimeout(()=>{
+      const d = operatorDocs.find(x=>x.id===newId);
+      if(d){ d.status='review'; d.confidence = 55+Math.floor(Math.random()*40); d.owner='New Owner'; d.area='1.8 acres'; d.survey='201/1';
+        operatorActivity.push({t: nowTime(), text:`AI extraction completed for ${newId}`});
+        if(S.tab.operator==='processing' || S.tab.operator==='review' || S.tab.operator==='dashboard'){ render(); toast(`${newId} is ready for review.`); }
+      }
+    }, 2600);
+  }
+  else if(kind==='op-review'){
+    const id = form.dataset.id;
+    const d = operatorDocs.find(x=>x.id===id);
+    if(d){
+      const inputs = form.querySelectorAll('input');
+      d.owner = inputs[0].value; d.survey = inputs[1].value; d.area = inputs[2].value; d.village = inputs[3].value;
+      d.status = 'completed'; d.confidence = Math.max(d.confidence, 90);
+      submittedRecords.push({id:d.id, survey:d.survey, village:d.village, confidence:d.confidence});
+      operatorActivity.push({t: nowTime(), text:`Submitted ${d.id} for verification`});
+      registrarPending.push({id:d.id, survey:d.survey, village:d.village, confidence:d.confidence, issue:d.confidence<80, owner:d.owner, area:d.area, operator:S.userName||'Operator'});
+    }
+    closeModal();
+    S.tab.operator='submitted';
+    render();
+    toast(`${id} submitted for officer verification.`, 'success');
+  }
+  else if(kind==='reg-review'){ /* not used directly, handled by save button */ }
+  else if(kind==='reject-record'){
+    const id = form.dataset.id;
+    const idx = registrarPending.findIndex(x=>x.id===id);
+    if(idx>=0){
+      const r = registrarPending[idx];
+      registrarPending.splice(idx,1);
+      registrarAudit.push({t: nowTime(), text:`Authority returned ${r.id} to operator for correction`});
+    }
+    closeModal();
+    render();
+    toast(`${id} returned to operator with feedback.`, 'error');
+  }
+  else if(kind==='citizen-search'){
+    const selects = form.querySelectorAll('select');
+    const village = selects[1] ? selects[1].value : '';
+    const surveyInput = form.querySelector('input[type="text"]');
+    const survey = surveyInput ? surveyInput.value.trim() : '';
+    let results = citizenAllRecords.filter(r=>{
+      let ok = true;
+      if(village) ok = ok && r.village===village;
+      if(survey) ok = ok && r.survey.includes(survey);
+      return ok;
+    });
+    S.citizenSearchResults = results;
+    render();
+  }
+  else if(kind==='citizen-request'){
+    reqCounter += 1;
+    citizenRequests.unshift({id:reqCounter, type: form.querySelectorAll('select')[0].value, stage:0});
+    closeModal();
+    S.tab.citizen='requests';
+    render();
+    toast(`Request #${reqCounter} submitted.`, 'success');
+  }
+});
+
+/* init */
+render();
+</script>
+</body>
+</html>
